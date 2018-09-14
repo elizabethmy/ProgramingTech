@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -15,7 +16,7 @@ Employee emps[3] =
 	{ 2, "Hermione Granger" },
 	{ 3, "Ron Weasley" }
 };
-
+///////////////////////////////////////////////////////////////
 void writeToFilErr(FILE *file)
 {
 	const char *s = "Hello everyone!";
@@ -29,7 +30,7 @@ void readFromFileErr(FILE *file)
 	(static_cast<char *>(ptr))[255] = '\0';
 	std::cout << static_cast<char *>(ptr) << std::endl;
 }
-
+/////////////////////////////////////////////////////////////
 void writeToFile(FILE *file)
 {
 	for (int i = 0; i < 3; i++)
@@ -50,13 +51,49 @@ void readFromFile(FILE *file)
 		std::cout << "================================" << std::endl;
 	}
 }
+///////////////////////////////////////////////////////////////////
+void readDataFromStream(std::string file)
+{
+	//std::ifstream fileInput(file);
+	std::fstream fileInput(file ,std::ios::in);
+	if (fileInput.fail())
+	{
+		std::cout << "Cannot open file at"<<std::endl;
+		return;
+	}
+	while (fileInput.eof())
+	{
+		char line[255];
+		fileInput.getline(line, 255);
+		cout << line << endl;
+	}
+}
 
+void writeDataFromStream(std::string file)
+{
+	//std::ofstream fileOutput(file);
+	std::fstream fileOutput(file, std::ios::out);
+
+	if(fileOutput.fail())
+	{
+		std::cout << "Cannot open file at" << std::endl;
+		return;
+	}
+	//Note: in fstream method, new text is override all old text in file.
+
+	fileOutput << "Hello Kitty" << endl;
+	fileOutput << "Hello ..." << endl;	
+	fileOutput << "Harry Potter" << endl;
+	fileOutput << "Hermione Granger" << endl;
+	fileOutput << "Ron Weasley" << endl;
+}
 
 int main()
 {
 	//file path use '/' 
 	const char* filePath = "H:/document/ProgramingTech_OOP/filetest.txt";
 	const char* filePath2 = "H:/document/ProgramingTech_OOP/file2test.txt";
+	const char* filePath3 = "H:/document/ProgramingTech_OOP/file3test.txt";
 	FILE* file;
 	FILE* file2;
 	errno_t err;
@@ -90,12 +127,16 @@ int main()
 		//readFromFileErr(file);
 
 		//5. write binary 2
-		writeToFile(file);
-		fseek(file, 0, SEEK_SET);
+		//writeToFile(file);
+		//fseek(file, 0, SEEK_SET);
 
 		//6. read binary 2
-		readFromFile(file);
+		//readFromFile(file);
 
+		//7. read write
+		writeDataFromStream(filePath3);
+		fseek(file, 0, SEEK_SET);
+		readDataFromStream(filePath3);
 		err = fclose(file);
 	}
 	else
