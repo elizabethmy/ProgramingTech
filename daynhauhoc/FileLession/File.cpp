@@ -87,7 +87,7 @@ void writeDataFromStream(std::string file)
 	fileOutput << "Hermione Granger" << endl;
 	fileOutput << "Ron Weasley" << endl;
 }
-
+////////////////////////////////////////////////////////////////
 int main()
 {
 	//file path use '/' 
