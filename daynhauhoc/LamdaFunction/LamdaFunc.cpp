@@ -99,9 +99,9 @@ int main()
 	int *a1 = &firstVal, *b1 = &secondVal;
 	auto F2 = [=, &a1]() mutable {int*t = a1; a1 = b1; b1 = t; };
 	F2();
-	cout << "a: " << *a1 << "b" << *b1<<endl;
+	cout << "a: " << *a1 << "b: " << *b1<<endl;
 	*a1 = firstVal;
-	cout << "a: " << *a1 << "b" << *b1 << endl;
+	cout << "a: " << *a1 << "b: " << *b1 << endl;
 
 	int one = 1, two =2;
 	auto swapFunc = [&]()
