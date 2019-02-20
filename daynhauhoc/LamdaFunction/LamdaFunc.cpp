@@ -1,4 +1,6 @@
 #include <iostream>
+#include "stdio.h"
+#include <functional>
 
 using namespace std;
 
@@ -44,11 +46,9 @@ int main()
 	cout << "result: " << F1Lamda(20.f, 30.f)<<endl;
 
 	int a = 10, b=5;
-	[&]() {a = a ^ b; b = a ^ b; a = a ^ b; };
-	cout << "aaaaa\n" << a << "aaa" << b << endl;
 	[a, &b]() mutable {a = 1; b = 1; 
-	cout << "Ccc" << ++++++a << endl; }();
-	cout << "CCCCCC" << a << endl;
+	cout << "Increase " << ++++++a << endl; }();
+	cout << "Out of lamda expression " << a << endl;
 
 	auto var = []()->int* {return nullptr; };//return a pointer
 
@@ -67,9 +67,9 @@ int main()
 		for (int i = 0; i < lenght-1; i++)
 		{
 			int min = i;
-			for (int i_cr = i + 1; i < lenght; i_cr++)
+			for (int i_cr = i + 1; i_cr < lenght; i_cr++)
 			{
-				if (/*comparisonFunc(arr[min], arr[i_cr])*/func(arr[min], arr[i_cr]))// throw exception why???
+				if (/*comparisonFunc(arr[min], arr[i_cr])*/func(arr[min], arr[i_cr]))
 				{
 					min = i_cr;
 				}
@@ -79,15 +79,40 @@ int main()
 	};
 
 	selectionSort(arr, length);
-	auto Factorial = [](unsigned int i)->int
+
+	std::function<int(unsigned int)> Factorial;
+
+	Factorial = [&Factorial](unsigned int i)->int
 	{
 		if (i <= 1)
 		{
 			return 1;
 		}
-		return i * Factorial(i - 1);//
+		return i * Factorial(i - 1);
 	};
+
+	cout << "Factorial of (10) is: " << Factorial(10) << endl;
+
 	[] {};
+
+	int firstVal = 5, secondVal = 15;
+	int *a1 = &firstVal, *b1 = &secondVal;
+	auto F2 = [=, &a1]() mutable {int*t = a1; a1 = b1; b1 = t; };
+	F2();
+	cout << "a: " << *a1 << "b" << *b1<<endl;
+	*a1 = firstVal;
+	cout << "a: " << *a1 << "b" << *b1 << endl;
+
+	int one = 1, two =2;
+	auto swapFunc = [&]()
+	{
+		one = one ^ two;
+		two = one ^ two;
+		one = one ^ two;
+	};
+	swapFunc();
+	cout << "one = " << one << " & two = " << two << endl;
+
 	system("PAUSE");
 	return 0;
 }
