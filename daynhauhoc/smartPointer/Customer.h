@@ -1,9 +1,7 @@
 #ifndef __CUSTOMER_H__
 #define __CUSTOMER_H__
-#include <iostream>
-#include "Home.h"
 
-using namespace std;
+#include "Home.h"
 
 class Customer
 {
@@ -14,8 +12,8 @@ private:
 	unsigned int m_age;
 
 public:
-	std::unique_ptr<Home> m_Home;
-
+	std::unique_ptr<Home> m_HomeForSell;
+	std::shared_ptr<Home> m_HomeForRent;
 	Customer(unsigned int id, std::string name, std::string address, unsigned int age);
 
 	virtual ~Customer();

@@ -7,4 +7,4 @@ enum class Category
 	SELL
 };
 
-#endif //
+#endif //__GLOBALVARIABLE_H__

@@ -1,9 +1,6 @@
 #ifndef __HOME_H__
 #define __HOME_H__
-#include <iostream>
 #include "GlobalVariable.h"
-
-using namespace std;
 
 class Home // Villa
 {
@@ -21,6 +18,18 @@ public:
 	Home(unsigned int id, unsigned int numberBathroom, unsigned int numberBedroom, unsigned int numberGarage, float Square, float Price, bool isUsing, Category useFor);
 
 	virtual ~Home();
+
+	inline unsigned int getID() { return m_id; };
+
+	inline void setNumberBathroom(unsigned int numberBathroom) { m_numberBathroom = numberBathroom; };
+	inline unsigned int getNumberBathroom() { return m_numberBathroom; };
+
+	inline void setNumberBedroom(unsigned int numberBedroom) { m_numberBedroom = numberBedroom; };
+	inline unsigned int getNumberBedroom() { return m_numberBedroom; };
+
+	inline void setNumberGarage(unsigned int numberGarage) { m_numberGarage = numberGarage; };
+	inline unsigned int getNumberGarage() { return m_numberGarage; };
+
 
 	bool checkStatus();
 

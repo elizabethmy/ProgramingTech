@@ -1,12 +1,15 @@
+#include <iostream>
+
 #include "UniquePointer.h"
 #include "Home.h"
 #include "Customer.h"
+
+using namespace std;
 
 UniquePointer*UniquePointer::m_instance = NULL;
 
 UniquePointer * UniquePointer::getInstance()
 {
-	{
 		if (m_instance != NULL)
 		{
 			return m_instance;
@@ -15,7 +18,6 @@ UniquePointer * UniquePointer::getInstance()
 		{
 			m_instance = new UniquePointer();
 		}
-	}
 }
 
 void UniquePointer::usingUniquePointer()
@@ -27,8 +29,8 @@ void UniquePointer::usingUniquePointer()
 	Customer customerHarryPotter(1, "Harry Potter", "12, Grimmauld Hall, British", 25);
 
 	cout << "Customer Harry bought this house" << endl;
-	customerHarryPotter.m_Home = std::move(homeX);
-	customerHarryPotter.m_Home.get()->setStatus(true);
+	customerHarryPotter.m_HomeForSell = std::move(homeX);
+	customerHarryPotter.m_HomeForSell.get()->setStatus(true);
 
 	cout << "After sold it, homeX is empty: " << homeX.get() << endl;
 
