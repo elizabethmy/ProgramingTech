@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Home.cpp" />
+    <ClCompile Include="PointerMainActivity.cpp" />
     <ClCompile Include="SharePointer.cpp" />
     <ClCompile Include="SmartPointer.cpp" />
     <ClCompile Include="Customer.cpp" />
@@ -127,6 +128,7 @@
     <ClInclude Include="GlobalVariable.h" />
     <ClInclude Include="Home.h" />
     <ClInclude Include="SharePointer.h" />
+    <ClInclude Include="SmartPointer.h" />
     <ClInclude Include="UniquePointer.h" />
     <ClInclude Include="WeakPointer.h" />
   </ItemGroup>
