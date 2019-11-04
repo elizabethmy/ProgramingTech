@@ -4,8 +4,10 @@ fun main(args: Array<String>) {
     var a: Int = -1
     val b: Int = 10 //value
     var s1 = "a has value $a"
+    var s4: String? //s4 is a non-nullable,s4 value can be null when have "?"
 
     //*Variable and basic operations*//
+    println("")
     println("...")
     println("Variable and basic operations")
     d = 1 // d is value is assigned but can not reassign
@@ -16,21 +18,24 @@ fun main(args: Array<String>) {
     println("Max of a, b: ${max(a, b)}")
 
     //*String*//
+    println("")
     println("...")
     println("String")
     val s2 = "${s1.replace("has", "had")}, now has value $a"
-    val s4 = replaceString("had", s2, "contains")
+    s4 = replaceString("had", s2, "contains")
     println("s2 is: ${s2}")
     println("s4 is:${s4}")
     val s3 = "hihihi"
     println("String `hihihi` has length: ")
     println("s3 length = ${getStringLength(s3)}")
 
+    println("")
     println("...")
     println("Unit function")
     voidFun()//not return function
 
     //*List*//
+    println("")
     println("...")
     println("List")
     println(describe(1))
@@ -43,9 +48,16 @@ fun main(args: Array<String>) {
     printListExample()
 
     //filter list
+    println("")
     println("...")
     println("filter list")
     listFruitFilter()
+
+    //number
+    println("")
+    println("...")
+    println("number")
+    longNumberReadable()
 }
 
 fun sum(a: Int, b: Int): Int {
@@ -79,6 +91,7 @@ fun describe(obj: Any): String =
         1 -> "One"
         "Hello" -> "Greeting"
         is Long -> "Long"
+        in 2..5 -> "2 to 5"
         !is String -> "Not a string"
         else -> "Unknown"
     }
@@ -136,4 +149,26 @@ fun printListExample(): Unit {
         println(x2)
     }
 
+    //mutable list
+    val listM = mutableListOf<String>("One", "Two", "Three", "Four", "Five")
+    listM.remove("Four")
+    println("\n $listM")
+}
+
+fun longNumberReadable(): Unit {
+    val oneMillion = 1_000_000
+    val socialSecurityNumber = 999_99_9999L
+    val hexBytes = 0xFF_EC_DE_5E
+    val bytes = 0b11010010_01101001_10010100_10010010
+
+    println("one MILLION is $oneMillion")
+    println("socialSecurityNumber is $socialSecurityNumber")
+    println("hexBytes is $hexBytes")
+    println("bytes is $bytes")
+}
+
+fun checkNull(): Unit {
+    var checkNull: String = "hello"
+    checkNull?.equals("world") ?: false
+    checkNull.compareTo("ahihi") //throw any Exception if value is null
 }
