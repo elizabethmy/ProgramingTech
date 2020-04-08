@@ -43,3 +43,34 @@ std1 = Student(1,39, "Harry",1413091,1)
 std1.funIntroduce()
 std1.funInfo()
 
+
+#class Number
+class Numbers:
+    def __iter__(self):
+        self.a = 1
+        return self
+    
+    def __next__(self):
+        if self.a <= 10:
+            x = self.a
+            self.a += 1
+            return x
+        else:
+            raise StopIteration
+classNum = Numbers()
+iterNum = iter(classNum) # iter an object
+
+for i in iterNum: # it auto run in a len of iter
+    if i % 3 == 0:
+       print(i)
+        
+### Example:
+## mymodule.py
+## In file: work.py. Import file by code:
+## `import mymodule`
+##  Using alias: `import mymodule as md`
+## Import only something from mymodule. Code:
+## `from mymodule import person1`
+import platform
+x = dir(platform)
+print(x)
