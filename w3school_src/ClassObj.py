@@ -74,3 +74,38 @@ for i in iterNum: # it auto run in a len of iter
 import platform
 x = dir(platform)
 print(x)
+
+"""
+# Module:
+platform
+datetime
+json
+Regular Expressions => import read
+# try except:
+try:
+except:
+"""
+
+"""
+#File handling:
+w  write, create file
+a  append, create file
+r  read, error if file not exist
+x  create file, error if file not exist
+
+t text
+b binary
+
+f = open("file.txt","rt")
+f.read()
+f.read(5)
+f.readline()
+f.write() # a, w
+f.close()
+#remove file:
+import os
+if os.path.exists("file.txt"):
+    os.remove("file.txt")
+os.rmdir("myfolder")
+
+"""
