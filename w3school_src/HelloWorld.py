@@ -185,3 +185,46 @@ else:
 # else:, pass like while loop
 
 #Function:
+def funArgurments(fname,fage,fschool = "Hogwart"):
+    print("Your name: " + fname)
+    print("Your age: " + str(fage))
+funArgurments("Harry Potter",39)
+#if you don't know, how many argument you will use. Please use *
+def funArbitrary(*_vars):
+    print("Your name is " + str(_vars[1]))
+
+def funArbitrary2(food):
+    for i in food:
+        print(i)
+    return len(food)
+    
+def funRecursion(fvar):
+    if fvar > 0:
+        result = 20 + funRecursion(fvar -1)
+        print(result)
+    else:
+        return 0
+    return result
+    
+funArbitrary("Harry","Ginny","Ron","Hermionie")
+funArgurments(fname = "Ron", fage = 39)
+funArgurments(fname = "Bill", fage = 20, fschool = "Havard")
+x= ["fish", "vegetable", "rice", "meat", "fruit"]
+print("Amount of food: "+str(funArbitrary2(x)))
+y = 20
+print("Recursion of y = " + str(funRecursion(20)))
+
+#LAMDA
+#Syntax lamda function: lamda arguments : expression
+def funLambda(fvar1,fvar2):
+    return lambda fvar1, fvar2 : fvar1 * fvar2 
+
+twelveTimes = funLambda(12,12) # return lambda
+print("twelveTimes "+ str(twelveTimes))
+print("twelveTimes of 31 "+ str(twelveTimes(31,31))) # using lambda
+
+# ARRAY: use Python list instead
+# remove(), append(), pop(), clear(), del, copy(), insert()...
+
+#Iterator
+# Python list is iterable object 
