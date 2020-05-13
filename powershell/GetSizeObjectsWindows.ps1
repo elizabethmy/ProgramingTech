@@ -1,7 +1,7 @@
 # target folder
 $startFolderGame =  'D:\inteam'
 $startFolderDoc =  'E:\'
-$startFolderDev =  'C:\DevTools'
+$startFolderDev =  'C:\'
 $startFolderC =  'C:\DevTools'
 
 $targetFolders= "$startFolderDev", 
@@ -26,7 +26,7 @@ foreach  ($targetFolder in $targetFolders)
 {
     $NewLine = "{0},{1}" -f '', ''
     $NewLine | add-content -path $outputFile
-    Get-ChildItem -force $targetFolder -ErrorAction SilentlyContinue | ? { $_ -is [io.directoryinfo] } | % {
+    Get-ChildItem -recurse -force $targetFolder -ErrorAction SilentlyContinue | ? { $_ -is [io.directoryinfo] } | % {
         $len = 0
         Get-ChildItem -recurse -force $_.fullname -ErrorAction SilentlyContinue | % { $len += $_.length }
         #get size
