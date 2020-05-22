@@ -7,13 +7,15 @@ $startFolderC =  'C:\DevTools'
 $targetFolders= "$startFolderDev", 
                 "$startFolderGame", "$startFolderGame\Game", "$startFolderGame\UnitTest","$startFolderGame\FrameworkTools",
                 "$startFolderC",
-                "$startFolderDoc" , "$startFolderDoc\learning\ProgramingTech"
+# input filter:
+$filterFolderName = ""
+$filterFileName = ""
 
 # output
 $date = "$(Get-Date)".Replace('/','_').Replace(' ','_').Replace(':','_')
-$outputFolder = 'E:\learning\ProgramingTech\powershell\powershell'
-$outputFile = "$outputFolder\ListFolderSize_$date.xlsx" #csv or xlsx/xls/txt
-New-Item "$outputFile" -ItemType File 
+$outputFolder = $PSScriptRoot
+$outputFile = "$outputFolder\ListFolderSize_$date.csv" #csv or xlsx/xls/txt
+New-Item $outputFile -ItemType File
 
 #header
 $folderName = 'Folder name'
@@ -26,20 +28,29 @@ foreach  ($targetFolder in $targetFolders)
 {
     $NewLine = "{0},{1}" -f '', ''
     $NewLine | add-content -path $outputFile
-    Get-ChildItem -recurse -force $targetFolder -ErrorAction SilentlyContinue | ? { $_ -is [io.directoryinfo] } | % {
+	Write-Progress -Id 1 -Activity 'Get size file' -Status 'Get size file in progress...' -PercentComplete -1 -Verbose
+    Get-ChildItem -recurse -force $targetFolder -Filter $filterFolderName -ErrorAction SilentlyContinue | ? { $_ -isnot [io.directoryinfo] } | % {
         $len = 0
-        Get-ChildItem -recurse -force $_.fullname -ErrorAction SilentlyContinue | % { $len += $_.length }
-        #get size
-        $folderName = $_.fullname
-        $folderSize= '{0:N2}' -f ($len / 1MB)       
+        Get-ChildItem -recurse -force -Filter $filterFileName -File $_.fullname -ErrorAction SilentlyContinue | % {
+            $len += $_.length
+            #get size
+            $folderName = $_.fullname
+            $folderSize= '{0:N2}' -f ($len / 1MB)       
+            
+            $folderSize = $folderSize.Replace(',','')
+            write-host "Folder $folderName : $folderSize MB"
 
-        $folderSize = $folderSize.Replace(',','')
-        "Folder $folderName : $folderSize"
-
-        #input to data object
-        $NewLine = "{0},{1}" -f $folderName , $folderSize
-        $NewLine | add-content -path $outputFile
+            #input to data object
+            $NewLine = "{0},{1}" -f $folderName , $folderSize
+            $NewLine | add-content -path $outputFile
+        }
     }
 
 }
+
+Write-Progress -Id 1 -Activity 'Done' -Status '...'-PercentComplete -1 -Completed
+write-host 'Done';
+$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+
+return
 

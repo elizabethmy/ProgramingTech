@@ -1,87 +1,59 @@
-﻿# target
-$startFolderGame =  'D:\inteam\FrameworkAndroid'
-$startFolderDoc =  'E:\Projects'
-$startFolderDev =  'D:\inteam\Build'
-$startFolderC =  'C:\DevTools'
+﻿# input list file
+$msg = "Input CSV file path containing the list files you want to delete. If the list file is currently not available. Please press enter to list the file again"
 
-$targetFolders= "$startFolderDoc", 
-                "$startFolderGame"
-                
-                 
-
-$filterObjectName = ""
-
-# output
-$date = "$(Get-Date)".Replace('/','_').Replace(' ','_').Replace(':','_')
-$outputFolder = 'E:\learning\ProgramingTech\powershell\powershell'
-$outputFile = "$outputFolder\ListFolderDelete_$date.xlsx" #csv or xlsx/xls/txt
-New-Item "$outputFile" -ItemType File 
-
-# save list files to delete
-$folderName = 'Folder name'
-$folderSize = 'Folder size (MB)'
-
-$NewLine = "{0},{1}" -f $folderName,$folderSize
-$NewLine | add-content -path $outputFile
-$isFilesList = false
-
-foreach  ($targetFolder in $targetFolders)
+$isFilesList = "false"
+$response = Read-Host -Prompt $msg
+if($response -eq '')
 {
-    $NewLine = "{0},{1}" -f '', ''
-    $NewLine | add-content -path $outputFile
-    Get-ChildItem -recurse -force $targetFolder -Filter $filterObjectName -ErrorAction SilentlyContinue |? { $_ -is [io.directoryinfo] } | % {
-        $len = 0
-        Get-ChildItem -recurse -force $_.fullname -ErrorAction SilentlyContinue | % { $len += $_.length }
-        #get size  | Where-Object Name -Like '*`Android*' 
-        $folderName = $_.fullname
-        $folderSize= '{0:N2}' -f ($len / 1MB)       
-
-        $folderSize = $folderSize.Replace(',','')
-        "Folder $folderName : $folderSize"
-
-        #input to data object
-        $NewLine = "{0},{1}" -f $folderName , $folderSize
-        $NewLine | add-content -path $outputFile
-    }
+    # call list file
+    $outputFile = Invoke-Expression -Command $PSScriptRoot\GetFolderSize.ps1
 }
+else
+{
+    $outputFile = $response
+}
+$isFilesList = "true"
 
-$isFilesList = true
  # open file
+ write-host "Please check list files before deleting."
+ write-host 'Press any key to continue...';
  Invoke-Item "$outputFile"
  write-host ""
 
 # prompt user
-if($isFilesList -eq (true)) {
-    $msgBoxInput = [System.Windows.MessageBox]::Show('Please check list files to delete. Do you want to start deleting files?',
-                   'Warning',
-                   [System.Windows.Forms.MessageBoxButtons]::OKCancel,
-                   [System.Windows.Forms.MessageBoxIcon]::Warning)
-    switch($msgBoxInput)
+$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+Add-Type -AssemblyName PresentationCore,PresentationFramework
+Add-Type -AssemblyName System.Windows.Forms
+if("$isFilesList" -eq "true") {
+    $msg = "Do you want to start deleting files? Press Y (Yes) to continue or any keys to cancel"
+    $response = Read-Host -Prompt $msg
+    if($response -eq 'y')
     {
-         "OK" {
-             write-host "_______________________________________________________________________________"
-             write-host ""
-             write-host "                 Starting delete files..."
-             write-host "_______________________________________________________________________________"
-             foreach  ($targetFolder in $targetFolders)
-             {
-                 Get-ChildItem -recurse -force $targetFolder -Filter $filterObjectName -ErrorAction SilentlyContinue |? { $_ -is [io.directoryinfo] } | % {
-                     $len = 0
-                     Get-ChildItem -recurse -force $_.fullname -ErrorAction SilentlyContinue | % { $len += $_.length }
-                  
-                     $folderName = $_.fullname
-                     $folderSize= '{0:N2}' -f ($len / 1MB)       
-                     $folderSize = $folderSize.Replace(',','')
-
-                     #Delete
-                     "Delete $folderName : $folderSize "
-                     #Remove-Item -Recurse -Force -Confirm:$false "$folderName" -ErrorAction SilentlyContinue
-                 }
-             }
-
-         } 
-         "Cancel" {
-             write-host "Cancel task"
-         } 
+        Write-Progress -Id 1 -Activity 'Delete' -Status 'Deleting files in progress...' -PercentComplete -1 -Verbose
+        write-host "_______________________________________________________________________________"
+        write-host ""
+        write-host "                 Starting delete files..."
+        write-host "_______________________________________________________________________________"
+             
+        $filesList = Get-Content -Path $outputFile
+        
+        foreach($file in $filesList)
+        {
+            $index = "$file".IndexOf(',')
+            $fileDir = "$file".Remove($index)
+            if($fileDir -ne '')
+            {
+                #DELETE file
+                Write-Host "Delete file $file".Replace(',',' :') "MB"
+                Remove-Item -Recurse -Force -Confirm:$false "$fileDir" -ErrorAction SilentlyContinue
+            }
+        }
+    }
+    else
+    {
+        Write-Host "Cancel task"
     }
 }
+Write-Progress -Id 1 -Activity 'Done' -Status '...'-PercentComplete -1 -Completed
+write-host 'Done';
+$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');

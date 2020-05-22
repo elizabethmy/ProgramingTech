@@ -1,0 +1,5 @@
+$targetFolders= "$startFolderSaiwks0759", 
+                "$startFolderNAS", #"$startFolderNAS\Android", "$startFolderNAS\iOS","$startFolderNAS\Windows",
+                #"$startFolderNAS\Android\Amazon", "$startFolderNAS\Android\Googleplay", "$startFolderNAS\Android\HMS","$startFolderNAS\Android\Samsung",
+                #"$startFolderNAS\iOS\macOS",
+                "$startFolderSAI04" #, "$startFolderSAI04\Android", "$startFolderSAI04\Windows","$startFolderSAI04\iOS"
