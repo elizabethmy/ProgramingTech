@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 
+int value = 3;
 /// *** Date *** ///
 struct Date
 {
@@ -159,6 +160,12 @@ int main()
 	cout << date.m_dd << endl;
 	cout << date.m_mm << endl;
 	cout << date.m_yy << endl;
+
+	int value = 100;
+
+	cout << "Global variable: " << ::value << endl;
+	cout << "Local variable: " << value << endl;
+
 	system("pause");
 	return 0;
 }
