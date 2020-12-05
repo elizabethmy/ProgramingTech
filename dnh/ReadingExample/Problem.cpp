@@ -1,4 +1,5 @@
 #include<iostream>
+#include<Windows.h>
 using namespace std;
 
 int value = 3;
@@ -160,12 +161,12 @@ int main()
 	cout << date.m_dd << endl;
 	cout << date.m_mm << endl;
 	cout << date.m_yy << endl;
-
+	Sleep(3000);
 	int value = 100;
 
 	cout << "Global variable: " << ::value << endl;
 	cout << "Local variable: " << value << endl;
-
+	//system("cls");
 	system("pause");
 	return 0;
 }
