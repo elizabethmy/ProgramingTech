@@ -1,10 +1,7 @@
 ﻿$folderSaveXLSX = 'E:\learning\ProgramingTech\powershell\powershell\data.xlsx'
 $folderSaveCSV = 'E:\learning\ProgramingTech\powershell\powershell\data.csv'
 $XL = 'E:\learning\ProgramingTech\powershell\powershell\data.csv'
-$startFolderSaiwks0759 =  '\\saiwks0759\A9_Build'
-$startFolderNAS =  '\\gameloft.org\sai\Android_Publishing\Asphalt9\Build'
-$startFolderSAI04 =  '\\sai-data04.gameloft.org\Android_Publishing\Asphalt9\Build'
-$startFolderAndroid =  '\\sai-data04.gameloft.org\Android_Publishing\Asphalt9\Build'
+$startFolderAndroid =  '\\Android\Build'
 
 # Get-Process | Export-Csv $folderSaveXLSX
 
