@@ -53,23 +53,23 @@ struct Date
 		}
 		switch (month)
 		{
-		case 4:
-		case 6:
-		case 9:
-		case 11:
-		{
-			return 30;
-		}
-		case 2:
-		{
-			if (isLeapYear(year) == 1)
+			case 4:
+			case 6:
+			case 9:
+			case 11:
 			{
-				return 29;
+				return 30;
 			}
-			return 28;
-		}
-		default:
-			return 31;
+			case 2:
+			{
+				if (isLeapYear(year) == 1)
+				{
+					return 29;
+				}
+				return 28;
+			}
+			default:
+				return 31;
 		}
 	}
 
@@ -84,70 +84,70 @@ struct Date
 		}
 		switch (date.m_mm)
 		{
-		case 4:
-		case 6:
-		case 9:
-		case 11:
-		{
-			if (date.m_dd > 30)
+			case 4:
+			case 6:
+			case 9:
+			case 11:
 			{
-				return -1;
+				if (date.m_dd > 30)
+				{
+					return -1;
+				}
+				else if (date.m_dd == 30)
+				{
+					date.m_dd = 1;
+					date.m_mm++;
+				}
+				else
+				{
+					date.m_dd++;
+				}
+				break;
 			}
-			else if (date.m_dd == 30)
+			case 2:
 			{
-				date.m_dd = 1;
-				date.m_mm++;
-			}
-			else
-			{
-				date.m_dd++;
-			}
-			break;
-		}
-		case 2:
-		{
-			if (date.m_dd > 29 || (isLeapYear(date.m_yy) == 0 && date.m_dd > 28))
-			{
-				return -1;
-			}
+				if (date.m_dd > 29 || (isLeapYear(date.m_yy) == 0 && date.m_dd > 28))
+				{
+					return -1;
+				}
 
-			if ((isLeapYear(date.m_yy) && date.m_dd == 29) || (isLeapYear(date.m_yy) == 0 && date.m_dd == 28))
-			{
-				date.m_dd = 1;
-				date.m_mm++;
+				if ((isLeapYear(date.m_yy) && date.m_dd == 29) || (isLeapYear(date.m_yy) == 0 && date.m_dd == 28))
+				{
+					date.m_dd = 1;
+					date.m_mm++;
+				}
+				else
+				{
+					date.m_dd++;
+				}
+				break;
 			}
-			else
+			default:
 			{
-				date.m_dd++;
-			}
-			break;
-		}
-		default:
-		{
-			if (date.m_dd > 31)
-			{
-				return -1;
-			}
+				if (date.m_dd > 31)
+				{
+					return -1;
+				}
 
-			if (date.m_mm == 12 && date.m_dd == 31)
-			{
-				date.m_dd = 1;
-				date.m_mm = 1;
-				date.m_yy++;
-			}
-			else if (date.m_dd == 31)
-			{
-				date.m_dd = 1;
-				date.m_mm++;
-			}
-			else
-			{
-				date.m_dd++;
-			}
-			
-			break;
+				if (date.m_mm == 12 && date.m_dd == 31)
+				{
+					date.m_dd = 1;
+					date.m_mm = 1;
+					date.m_yy++;
+				}
+				else if (date.m_dd == 31)
+				{
+					date.m_dd = 1;
+					date.m_mm++;
+				}
+				else
+				{
+					date.m_dd++;
+				}
 
-		}
+				break;
+
+			}
 		}
 		return 1;
 	}
@@ -166,7 +166,7 @@ int main()
 
 	cout << "Global variable: " << ::value << endl;
 	cout << "Local variable: " << value << endl;
-	//system("cls");
+	system("cls");
 	system("pause");
 	return 0;
 }
