@@ -7,8 +7,6 @@
 | development | [![Build Status](https://travis-ci.com/banhmuy/ProgramingTech.svg?branch=development)](https://travis-ci.com/banhmuy/ProgramingTech) |
 
 ## Table of content
-- [** ProgramingTech_OOP**](#-programingtech_oop)
-  - [Table of content](#table-of-content)
   - [Introduction](#introduction)
   - [Usage](#usage)
     - [Prerequisites](#prerequisites)
