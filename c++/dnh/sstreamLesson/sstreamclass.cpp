@@ -1,6 +1,6 @@
 #include <iostream>
 #include <sstream>
-#include<vector>
+#include <vector>
 
 using namespace std;
 
@@ -10,7 +10,7 @@ void initialSStream(std::stringstream &ss)
 	ss.str("This string is created by method using str() C++ language\n");
 }
 
-void outputSSString(std::stringstream ss)//CAN'T USE this function: don't know why
+void outputSSString(std::stringstream ss) //CAN'T USE this function: don't know why
 {
 	cout << ss.str() << endl;
 }
@@ -20,7 +20,7 @@ void example1()
 	std::stringstream os;
 	os << "12345 67.89"; // insert a string of numbers into the stream
 
-	std::string strValue;//give value into variable strValue
+	std::string strValue; //give value into variable strValue
 	os >> strValue;
 
 	std::string strValue2;
@@ -78,8 +78,8 @@ void string_to_number()
 }
 void clear_string(stringstream ss)
 {
-	ss.str("");//eraser the buffer
-	ss.clear();//eraser and reset error flags
+	ss.str(""); //eraser the buffer
+	ss.clear(); //eraser and reset error flags
 }
 int main()
 {

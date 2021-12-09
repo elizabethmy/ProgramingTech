@@ -28,7 +28,8 @@ bool Home::checkStatus()
 	{
 		cout << "Home is using" << endl;
 	}
-	else {
+	else
+	{
 		cout << "No one owns it" << endl;
 	}
 	return m_isUsing;
@@ -38,4 +39,3 @@ void Home::setStatus(bool isUsing)
 {
 	m_isUsing = isUsing;
 }
-

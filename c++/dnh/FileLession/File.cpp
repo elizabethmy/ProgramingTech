@@ -11,11 +11,10 @@ struct Employee
 };
 
 Employee emps[3] =
-{
-	{ 1, "Harry Potter" },
-	{ 2, "Hermione Granger" },
-	{ 3, "Ron Weasley" }
-};
+	{
+		{1, "Harry Potter"},
+		{2, "Hermione Granger"},
+		{3, "Ron Weasley"}};
 ///////////////////////////////////////////////////////////////
 void writeToFilErr(FILE *file)
 {
@@ -55,10 +54,10 @@ void readFromFile(FILE *file)
 void readDataFromStream(std::string file)
 {
 	//std::ifstream fileInput(file);
-	std::fstream fileInput(file ,std::ios::in);
+	std::fstream fileInput(file, std::ios::in);
 	if (fileInput.fail())
 	{
-		std::cout << "Cannot open file at"<<std::endl;
+		std::cout << "Cannot open file at" << std::endl;
 		return;
 	}
 	while (fileInput.eof())
@@ -74,7 +73,7 @@ void writeDataFromStream(std::string file)
 	//std::ofstream fileOutput(file);
 	std::fstream fileOutput(file, std::ios::out);
 
-	if(fileOutput.fail())
+	if (fileOutput.fail())
 	{
 		std::cout << "Cannot open file at" << std::endl;
 		return;
@@ -82,7 +81,7 @@ void writeDataFromStream(std::string file)
 	//Note: in fstream method, new text is override all old text in file.
 
 	fileOutput << "Hello Kitty" << endl;
-	fileOutput << "Hello ..." << endl;	
+	fileOutput << "Hello ..." << endl;
 	fileOutput << "Harry Potter" << endl;
 	fileOutput << "Hermione Granger" << endl;
 	fileOutput << "Ron Weasley" << endl;
@@ -90,12 +89,12 @@ void writeDataFromStream(std::string file)
 ////////////////////////////////////////////////////////////////
 int main()
 {
-	//file path use '/' 
-	const char* filePath = "H:/document/ProgramingTech_OOP/filetest.txt";
-	const char* filePath2 = "H:/document/ProgramingTech_OOP/file2test.txt";
-	const char* filePath3 = "H:/document/ProgramingTech_OOP/file3test.txt";
-	FILE* file;
-	FILE* file2;
+	//file path use '/'
+	const char *filePath = "H:/document/ProgramingTech_OOP/filetest.txt";
+	const char *filePath2 = "H:/document/ProgramingTech_OOP/file2test.txt";
+	const char *filePath3 = "H:/document/ProgramingTech_OOP/file3test.txt";
+	FILE *file;
+	FILE *file2;
 	errno_t err;
 
 	file = fopen(filePath, "w+b");
@@ -107,7 +106,7 @@ int main()
 		cout << "File is not null" << endl;
 		//1. write
 		/*int c = fputc('A',file);
-		
+
 		for (int i = 0; i < 5; i++)
 		{
 			fprintf(file, "\nI must challenge myselft!",i);
@@ -116,13 +115,13 @@ int main()
 		//2. write binary
 		/*writeToFileErr(file);
 		fseek(file, 0, SEEK_SET);*/
-		
+
 		//3. read
 		/*std::cout << (char)fgetc(file) << std::endl;
 		char str[255];
 		std::cout << fgets(str, 255, file) << endl;
 		cout << str << endl;*/
-		
+
 		//4. read binary
 		//readFromFileErr(file);
 
@@ -165,7 +164,6 @@ int main()
 
 		err = fclose(file2);
 	}
-
 
 	system("pause");
 	return 0;

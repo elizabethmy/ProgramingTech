@@ -8,7 +8,7 @@ class Customer
 private:
 	unsigned int m_id;
 	std::string m_name;
-	std::string m_address;//City,Country
+	std::string m_address; //City,Country
 	unsigned int m_age;
 
 public:

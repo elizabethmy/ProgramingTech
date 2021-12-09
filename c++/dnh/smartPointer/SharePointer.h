@@ -4,9 +4,10 @@
 class SharePointer
 {
 private:
-	static SharePointer* m_Instance;
+	static SharePointer *m_Instance;
+
 public:
-	static SharePointer*getInstance();
+	static SharePointer *getInstance();
 	void usingSharePointer();
 };
 

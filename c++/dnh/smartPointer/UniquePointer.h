@@ -11,7 +11,7 @@ private:
 	//UniquePointer(); //errorrr
 public:
 	static UniquePointer* getInstance();
-	
+
 	void usingUniquePointer();
 };
 

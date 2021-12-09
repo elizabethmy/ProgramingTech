@@ -1,19 +1,19 @@
 
 #define ClassA
 class Person:
-    ID = 0
-    age = 0
-    name = ""
-    
-    def __init__(myself, ID, age, name): # like constructor
-        myself.ID = ID
-        myself.age = age
-        myself.name = name
-    
-    def funInfo(myself): # if using properties of class, func need self paramenter        
-        print("ID: " + str(myself.ID))
-        print("name: " + str(myself.name))
-        print("age: " + str(myself.age))
+	ID = 0
+	age = 0
+	name = ""
+
+	def __init__(myself, ID, age, name): # like constructor
+		myself.ID = ID
+		myself.age = age
+		myself.name = name
+
+	def funInfo(myself): # if using properties of class, func need self paramenter
+		print("ID: " + str(myself.ID))
+		print("name: " + str(myself.name))
+		print("age: " + str(myself.age))
 
 #Using ClassA
 """
@@ -26,17 +26,17 @@ print("objClassA2: " +str(objClassA2.funClassA1()))
 """
 
 class Student(Person):
-    MSSV =0
-    classNum = 0
-    def __init__(self, ID, age, name, MSSV, classNum):
-        #Person.__init__(self, ID, age, name)
-        super().__init__(ID, age, name)
-        self.MSSV = MSSV
-        self.classNum = classNum
-        
-    def funIntroduce(self): #self
-        print("A student MSSV: " +str(self.MSSV))
-        print("A student classNum: "+str(self.classNum))
+	MSSV =0
+	classNum = 0
+	def __init__(self, ID, age, name, MSSV, classNum):
+		#Person.__init__(self, ID, age, name)
+		super().__init__(ID, age, name)
+		self.MSSV = MSSV
+		self.classNum = classNum
+
+	def funIntroduce(self): #self
+		print("A student MSSV: " +str(self.MSSV))
+		print("A student classNum: "+str(self.classNum))
 
 std1 = Student(1,39, "Harry",1413091,1)
 
@@ -46,24 +46,24 @@ std1.funInfo()
 
 #class Number
 class Numbers:
-    def __iter__(self):
-        self.a = 1
-        return self
-    
-    def __next__(self):
-        if self.a <= 10:
-            x = self.a
-            self.a += 1
-            return x
-        else:
-            raise StopIteration
+	def __iter__(self):
+		self.a = 1
+		return self
+
+	def __next__(self):
+		if self.a <= 10:
+			x = self.a
+			self.a += 1
+			return x
+		else:
+			raise StopIteration
 classNum = Numbers()
 iterNum = iter(classNum) # iter an object
 
 for i in iterNum: # it auto run in a len of iter
-    if i % 3 == 0:
-       print(i)
-        
+	if i % 3 == 0:
+	   print(i)
+
 ### Example:
 ## mymodule.py
 ## In file: work.py. Import file by code:
@@ -105,7 +105,7 @@ f.close()
 #remove file:
 import os
 if os.path.exists("file.txt"):
-    os.remove("file.txt")
+	os.remove("file.txt")
 os.rmdir("myfolder")
 
 """

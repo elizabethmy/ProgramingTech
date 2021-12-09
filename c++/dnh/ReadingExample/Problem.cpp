@@ -1,5 +1,5 @@
-#include<iostream>
-#include<Windows.h>
+#include <iostream>
+#include <Windows.h>
 using namespace std;
 
 int value = 3;
@@ -10,15 +10,13 @@ struct Date
 	unsigned int m_mm;
 	unsigned int m_yy; //4 digits number
 
-	Date() :m_dd(1), m_mm(1), m_yy(1900)
+	Date() : m_dd(1), m_mm(1), m_yy(1900)
 	{
 	}
 
-	Date(unsigned int day, unsigned int month, unsigned int year) :m_dd(1), m_mm(1), m_yy(1900)
+	Date(unsigned int day, unsigned int month, unsigned int year) : m_dd(1), m_mm(1), m_yy(1900)
 	{
-		if ((year < 1900 && year>10000) 
-			|| (month < 1 && month >12) 
-			|| (day < 1 && day>31))
+		if ((year < 1900 && year > 10000) || (month < 1 && month > 12) || (day < 1 && day > 31))
 		{
 		}
 		else
@@ -53,101 +51,98 @@ struct Date
 		}
 		switch (month)
 		{
-			case 4:
-			case 6:
-			case 9:
-			case 11:
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+		{
+			return 30;
+		}
+		case 2:
+		{
+			if (isLeapYear(year) == 1)
 			{
-				return 30;
+				return 29;
 			}
-			case 2:
-			{
-				if (isLeapYear(year) == 1)
-				{
-					return 29;
-				}
-				return 28;
-			}
-			default:
-				return 31;
+			return 28;
+		}
+		default:
+			return 31;
 		}
 	}
 
 	/// day after ///
 	int dayAfter(Date &date)
 	{
-		if (isLeapYear(date.m_yy) == -1 
-			|| (date.m_mm < 1 && date.m_mm > 12) 
-			|| date.m_dd < 1)
+		if (isLeapYear(date.m_yy) == -1 || (date.m_mm < 1 && date.m_mm > 12) || date.m_dd < 1)
 		{
 			return -1;
 		}
 		switch (date.m_mm)
 		{
-			case 4:
-			case 6:
-			case 9:
-			case 11:
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+		{
+			if (date.m_dd > 30)
 			{
-				if (date.m_dd > 30)
-				{
-					return -1;
-				}
-				else if (date.m_dd == 30)
-				{
-					date.m_dd = 1;
-					date.m_mm++;
-				}
-				else
-				{
-					date.m_dd++;
-				}
-				break;
+				return -1;
 			}
-			case 2:
+			else if (date.m_dd == 30)
 			{
-				if (date.m_dd > 29 || (isLeapYear(date.m_yy) == 0 && date.m_dd > 28))
-				{
-					return -1;
-				}
-
-				if ((isLeapYear(date.m_yy) && date.m_dd == 29) || (isLeapYear(date.m_yy) == 0 && date.m_dd == 28))
-				{
-					date.m_dd = 1;
-					date.m_mm++;
-				}
-				else
-				{
-					date.m_dd++;
-				}
-				break;
+				date.m_dd = 1;
+				date.m_mm++;
 			}
-			default:
+			else
 			{
-				if (date.m_dd > 31)
-				{
-					return -1;
-				}
-
-				if (date.m_mm == 12 && date.m_dd == 31)
-				{
-					date.m_dd = 1;
-					date.m_mm = 1;
-					date.m_yy++;
-				}
-				else if (date.m_dd == 31)
-				{
-					date.m_dd = 1;
-					date.m_mm++;
-				}
-				else
-				{
-					date.m_dd++;
-				}
-
-				break;
-
+				date.m_dd++;
 			}
+			break;
+		}
+		case 2:
+		{
+			if (date.m_dd > 29 || (isLeapYear(date.m_yy) == 0 && date.m_dd > 28))
+			{
+				return -1;
+			}
+
+			if ((isLeapYear(date.m_yy) && date.m_dd == 29) || (isLeapYear(date.m_yy) == 0 && date.m_dd == 28))
+			{
+				date.m_dd = 1;
+				date.m_mm++;
+			}
+			else
+			{
+				date.m_dd++;
+			}
+			break;
+		}
+		default:
+		{
+			if (date.m_dd > 31)
+			{
+				return -1;
+			}
+
+			if (date.m_mm == 12 && date.m_dd == 31)
+			{
+				date.m_dd = 1;
+				date.m_mm = 1;
+				date.m_yy++;
+			}
+			else if (date.m_dd == 31)
+			{
+				date.m_dd = 1;
+				date.m_mm++;
+			}
+			else
+			{
+				date.m_dd++;
+			}
+
+			break;
+		}
 		}
 		return 1;
 	}

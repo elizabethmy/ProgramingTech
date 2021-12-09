@@ -11,7 +11,7 @@ private:
 	unsigned int m_numberGarage;
 	float m_square;
 	float m_price;
-	bool m_isUsing = { false };
+	bool m_isUsing = {false};
 	Category m_useFor;
 
 public:
@@ -29,7 +29,6 @@ public:
 
 	inline void setNumberGarage(unsigned int numberGarage) { m_numberGarage = numberGarage; };
 	inline unsigned int getNumberGarage() { return m_numberGarage; };
-
 
 	bool checkStatus();
 

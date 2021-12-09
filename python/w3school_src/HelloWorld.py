@@ -2,10 +2,10 @@
 print("Hello!")
 
 if 1 > 2:
-    print("Impossiple")
+	print("Impossiple")
 else:
-    print("Maybe like that");
-    
+	print("Maybe like that");
+
 x = 5
 x = "Hello , work";
 
@@ -29,12 +29,12 @@ a = 1
 b = 1
 c = "Hi!"
 def myFun():
-    global globalVar
-    if a == b:
-        globalVar = c+ " Python is easy."       
-    else:
-        globalVar = "What do you thing?"
-    print(globalVar)
+	global globalVar
+	if a == b:
+		globalVar = c+ " Python is easy."
+	else:
+		globalVar = "What do you thing?"
+	print(globalVar)
 
 myFun()
 print("They think: " + globalVar)
@@ -57,7 +57,7 @@ print(u)
 # string
 x = """ I have been heard a symphony
 Before all I heard was silient"""
-      
+
 print(x)
 
 y = '''Rhapsody for you and me
@@ -73,11 +73,11 @@ print(x.strip())
 # others: low(), upper()
 print(x.replace('a','i'))
 if "melody" in y:
-    print("Have melody")
+	print("Have melody")
 elif "you" in y:
-    print("Have you")
+	print("Have you")
 elif "me" in y:
-    pass # mean that do nothing
+	pass # mean that do nothing
 
 
 x = "I have {} computer and {} cat"
@@ -95,7 +95,7 @@ bool([])
 bool(())
 bool({})
 
-#operators: 
+#operators:
 #python list: list, tuple, set, dictionaries
 #list: list with negative index
 x =["fish", "fruit", "rice"]
@@ -130,7 +130,7 @@ print(t)
 #    you can clear(), del() list, you can del() list element
 #    it can be like nested
 
-dict = { 
+dict = {
 "key":"value",
 "fish":"in the river"
 }
@@ -141,10 +141,10 @@ dict["key"] = "key value"
 print(dict)
 
 for x,y in dict.items():
-    print(x,y)
+	print(x,y)
 dict["fruit"]="in tree"
-print(dict)    
-  
+print(dict)
+
 
 list = """
 #[list]
@@ -166,46 +166,46 @@ print(list)
 #While loop
 i=1
 while i<20:
-    if i % 2 == 0:
-        print("i = "+ str(i))
-    elif i % 21 == 0:
-        print("end game")
-        break
-    else:
-        print("continue game")
-        i += 1
-        continue
-    print("inscrease game")
-    i += 1
+	if i % 2 == 0:
+		print("i = "+ str(i))
+	elif i % 21 == 0:
+		print("end game")
+		break
+	else:
+		print("continue game")
+		i += 1
+		continue
+	print("inscrease game")
+	i += 1
 else:
-    print("i no longer < 20")
-    
+	print("i no longer < 20")
+
 #For loop
 # using for..in..range: range(number), range(startValue,endValue,inscrease)
 # else:, pass like while loop
 
 #Function:
 def funArgurments(fname,fage,fschool = "Hogwart"):
-    print("Your name: " + fname)
-    print("Your age: " + str(fage))
+	print("Your name: " + fname)
+	print("Your age: " + str(fage))
 funArgurments("Harry Potter",39)
 #if you don't know, how many argument you will use. Please use *
 def funArbitrary(*_vars):
-    print("Your name is " + str(_vars[1]))
+	print("Your name is " + str(_vars[1]))
 
 def funArbitrary2(food):
-    for i in food:
-        print(i)
-    return len(food)
-    
+	for i in food:
+		print(i)
+	return len(food)
+
 def funRecursion(fvar):
-    if fvar > 0:
-        result = 20 + funRecursion(fvar -1)
-        print(result)
-    else:
-        return 0
-    return result
-    
+	if fvar > 0:
+		result = 20 + funRecursion(fvar -1)
+		print(result)
+	else:
+		return 0
+	return result
+
 funArbitrary("Harry","Ginny","Ron","Hermionie")
 funArgurments(fname = "Ron", fage = 39)
 funArgurments(fname = "Bill", fage = 20, fschool = "Havard")
@@ -217,7 +217,7 @@ print("Recursion of y = " + str(funRecursion(20)))
 #LAMDA
 #Syntax lamda function: lamda arguments : expression
 def funLambda(fvar1,fvar2):
-    return lambda fvar1, fvar2 : fvar1 * fvar2 
+	return lambda fvar1, fvar2 : fvar1 * fvar2
 
 twelveTimes = funLambda(12,12) # return lambda
 print("twelveTimes "+ str(twelveTimes))
@@ -227,4 +227,4 @@ print("twelveTimes of 31 "+ str(twelveTimes(31,31))) # using lambda
 # remove(), append(), pop(), clear(), del, copy(), insert()...
 
 #Iterator
-# Python list is iterable object 
+# Python list is iterable object

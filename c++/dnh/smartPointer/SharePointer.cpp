@@ -5,9 +5,9 @@
 
 using namespace std;
 
-SharePointer*SharePointer::m_Instance = NULL;
+SharePointer *SharePointer::m_Instance = NULL;
 
-SharePointer * SharePointer::getInstance()
+SharePointer *SharePointer::getInstance()
 {
 	if (m_Instance)
 	{
@@ -23,8 +23,8 @@ void SharePointer::usingSharePointer()
 {
 	std::shared_ptr<Home> homeForRent = make_shared<Home>(2, 1, 1, 1, 1500, 500, true, Category::RENT);
 
-	Customer customerAlbus(2,"Albus Potter", "12, Grimmauld Hall, British",18);
-	Customer customerJames(3,"James Potter","12, Grimmauld Hall, British",20);
+	Customer customerAlbus(2, "Albus Potter", "12, Grimmauld Hall, British", 18);
+	Customer customerJames(3, "James Potter", "12, Grimmauld Hall, British", 20);
 
 	customerJames.m_HomeForRent = homeForRent;
 	customerAlbus.m_HomeForRent = homeForRent;
