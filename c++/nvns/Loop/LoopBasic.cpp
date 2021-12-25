@@ -107,7 +107,7 @@ void specialNumberIdentifier(int a, int b)
 	{
 		if (isSymmetricalNumber(i) == true)
 		{
-			std::cout << "Symmetrical Number: " << i <<" " << std::endl;
+			std::cout << "Symmetrical Number: " << i << " " << std::endl;
 			synmetricNumberQuantity++;
 			synmetricNumberSum += i;
 		}
@@ -132,6 +132,23 @@ void specialNumberIdentifier(int a, int b)
 	std::cout << "Number of Synmetrical Number: " << synmetricNumberQuantity << " " << std::endl;
 	std::cout << "Number of Square Number: " << squareNumberQuantity << " " << std::endl;
 	std::cout << "Number of Prime Number: " << primeNumberQuantity << " " << std::endl;
+}
+
+void findNumExersise3(int a, int b)
+{
+	int i = a;
+	for (; i <= b; i++)
+	{
+		int dozen = i / 10;
+		int unit = i % 10;
+		int multi = dozen * unit;
+		int sum = 2 * (dozen + unit);
+
+		if (multi == sum)
+		{
+			std::cout << "Number: " << i << std::endl;
+		}
+	}
 }
 
 int main()
@@ -160,5 +177,18 @@ int main()
 		std::cout << " " << std::endl;
 	} while (b < a);
 	specialNumberIdentifier(a, b);
+
+	//output 3
+	do
+	{
+		std::cout << " " << std::endl;
+		std::cout << "Input number a: " << std::endl;
+		std::cin >> a;
+		std::cout << "Input number b: " << std::endl;
+		std::cin >> b;
+		std::cout << " " << std::endl;
+	} while ((a < 10 && a > 99) || (b < 10 && b > 99));
+	findNumExersise3(a, b);
+
 	return 0;
 }
