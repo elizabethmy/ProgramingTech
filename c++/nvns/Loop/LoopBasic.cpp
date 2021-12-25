@@ -151,6 +151,37 @@ void findNumExersise3(int a, int b)
 	}
 }
 
+int UCLN(int a, int b)
+{
+	int n = (a > b) ? a : b;
+	int i = n;
+	for (; i > 0; i--)
+	{
+		if ((a % i == 0) && (b % i == 0))
+		{
+			return i;
+		}
+	}
+	
+}
+
+void Fibonacy(int n)
+{
+	int a0 = 1;
+	int a1 = 1, i = 0;
+	std::cout << a0 << " " << a1;
+	for (; i < n; i++)
+	{
+		int c = a1 + a0;
+		a0 = a1;
+		a1 = c;
+		
+		std::cout << " " << a1;
+	}
+
+
+}
+
 int main()
 {
 	//input 1
@@ -189,6 +220,14 @@ int main()
 		std::cout << " " << std::endl;
 	} while ((a < 10 && a > 99) || (b < 10 && b > 99));
 	findNumExersise3(a, b);
+
+	//output 4
+	std::cout << "UCLN " << a << " & " << b << ": " << UCLN(a,b) << std::endl;
+
+	//output 5
+	std::cout << " " << std::endl;
+	std::cout << " Fibonacy " << std::endl;
+	Fibonacy(n);
 
 	return 0;
 }
