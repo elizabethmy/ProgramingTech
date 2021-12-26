@@ -182,7 +182,7 @@ void Fibonacy(int n)
 
 }
 
-int main()
+int LoopBasicmain()
 {
 	//input 1
 	int n;
