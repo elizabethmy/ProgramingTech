@@ -18,7 +18,8 @@ enum CurrencDenomination //VND
 	FIVE_HUNDRED = 500
 };
 
-int main()
+//int main()
+int LoopAdvancemain()
 {
 	//input
 	float price = 0.f, customerPaid = 0.f;

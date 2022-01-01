@@ -38,6 +38,26 @@ bool isSquareNumber(int n)
 	}
 	return false;
 }
+bool isSquareNumberWay2(int n)
+{
+	//1,4,9...
+	/*
+	* Compare sqrt
+	*/
+	if (n == 1)
+	{
+		return true;
+	}
+	/*
+	* Compare sqrt
+	*/
+	if (sqrt((double)n) == (int)sqrt((double)n))
+	{
+		return true;
+	}
+
+	return false;
+}
 
 bool isPrimeNumber(int n)
 {
@@ -182,7 +202,8 @@ void Fibonacy(int n)
 
 }
 
-int LoopBasicmain()
+//int LoopBasicmain()
+int main()
 {
 	//input 1
 	int n;
