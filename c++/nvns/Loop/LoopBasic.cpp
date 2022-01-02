@@ -63,13 +63,20 @@ bool isPrimeNumber(int n)
 {
 	//special case:1,2,3 and ,5,7,11,13,17...
 	//i=0...(n-1), if n % i == 0 => not prime
+	//does not care even number
 	if (n == 1 || n == 2 || n == 3)
 	{
 		return true;
 	}
 
-	int i = n - 1;
-	for (; i > 1; i--)
+	//int i = (n - 1) / 2;
+	int i = 3;
+	if (n > 3 && (n % 2) == 0)
+	{
+		return false;
+	}
+
+	for (; i <= (int)sqrt((double)n); i+=2)
 	{
 		if (n % i == 0)
 		{
@@ -82,14 +89,14 @@ bool isPrimeNumber(int n)
 bool isAscendingNumber(int n)
 {
 	//11, 123, 11223,...
-	//i1 = n%10, n=n%10, i2 = n%10, if i1 > i2 > i3 > i4 ...true
-	int i1 = n % 10;
+	//remainder = n%10, n=n%10, i2 = n%10, if remainder > i2 > i3 > i4 ...true
+	int remainder = n % 10;
 	n = n / 10;
 	while (n / 10 != 0)
 	{
-		if (i1 >= (n % 10)) //i1 > i2
+		if (remainder >= (n % 10)) //remainder > i2
 		{
-			i1 = n % 10;
+			remainder = n % 10;
 			n = n / 10;
 		}
 		else {
@@ -102,14 +109,14 @@ bool isAscendingNumber(int n)
 bool isDescendingNumber(int n)
 {
 	//11, 321, 32211,...
-	//i1 = n%10, n=n%10, i2 = n%10, if i1 < i2 < i3 < i4 ...true
-	int i1 = n % 10;
+	//remainder = n%10, n=n%10, i2 = n%10, if remainder < i2 < i3 < i4 ...true
+	int remainder = n % 10;
 	while (n / 10 != 0)
 	{
 		n = n / 10;
-		if (i1 <= (n % 10)) //i1 < i2
+		if (remainder <= (n % 10)) //i1 < i2
 		{
-			i1 = n % 10;
+			remainder = n % 10;
 		}
 		else {
 			return false;
@@ -202,8 +209,8 @@ void Fibonacy(int n)
 
 }
 
-//int LoopBasicmain()
-int main()
+//int main()
+int LoopBasicmain()
 {
 	//input 1
 	int n;

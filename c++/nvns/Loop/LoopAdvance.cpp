@@ -18,23 +18,44 @@ enum CurrencDenomination //VND
 	FIVE_HUNDRED = 500
 };
 
-//int main()
-int LoopAdvancemain()
+//Input price and the money user give
+void InputPrice(float& priceOfProduct, float& moneyUserGiven)
 {
-	//input
-	float price = 0.f, customerPaid = 0.f;
-	float exchange = 0.f;
-	//Amount to be paid by user
 	do
 	{
 		std::cout << "Please input the amount user must pay: ";
-		std::cin >> price;
+		std::cin >> priceOfProduct;
 		std::cout << "" << std::endl;
 		std::cout << "Please input the money user give: ";
-		std::cin >> customerPaid;
-	} while (price < 0.f || (customerPaid - price) < 0.f);
+		std::cin >> moneyUserGiven;
+	} while (priceOfProduct < 0.f || (moneyUserGiven - priceOfProduct) < 0.f);
+}
 
-	//output
+void showNumberMoneyNote(int moneyNote,int denomination)
+{
+	if (moneyNote == 1)
+	{
+		std::cout << "1 note "<< denomination << " VND " << std::endl;
+	}
+	else if (moneyNote > 1)
+	{
+		std::cout << moneyNote << " notes " << denomination << " VND " << std::endl;
+	}
+
+}
+
+void countMoneyNote(int& moneyNote, float& remainderExchange, int  denomination)
+{
+	if (remainderExchange >= FIVE_HUNDRED)
+	{
+		moneyNote = (int)remainderExchange / denomination;
+		remainderExchange = remainderExchange - moneyNote * denomination;
+	}
+}
+
+//The customer's balance is refunded
+void exchangeMoneyNote(float exchange)
+{
 	int fiveHundreadThousandNote = 0;
 	int twoHundreadThousandNote = 0;
 	int oneHundreadThousandNote = 0;
@@ -45,8 +66,6 @@ int LoopAdvancemain()
 	int twoThousandNote = 0;
 	int oneThousandNote = 0;
 	int fiveHundreadNote = 0;
-	std::cout << "The amount the customer has to change: " << std::endl;
-	exchange = customerPaid - price;
 	while (exchange > 0)
 	{
 		if (exchange == 0)
@@ -55,72 +74,65 @@ int LoopAdvancemain()
 		}
 		else
 		{
-			if (exchange >= FIVE_HUNDRED_THOUSAND)
-			{
-				fiveHundreadThousandNote = (int)exchange / FIVE_HUNDRED_THOUSAND;
-				exchange = exchange - fiveHundreadThousandNote * FIVE_HUNDRED_THOUSAND;
-			}
-			else if (exchange >= TWO_HUNDRED_THOUSAND)
-			{
-				twoHundreadThousandNote = (int)exchange / TWO_HUNDRED_THOUSAND;
-				exchange = exchange - twoHundreadThousandNote * TWO_HUNDRED_THOUSAND;
-			}
-			else if (exchange >= ONE_HUNDRED_THOUSAND)
-			{
-				oneHundreadThousandNote = (int)exchange / ONE_HUNDRED_THOUSAND;
-				exchange = exchange - oneHundreadThousandNote * ONE_HUNDRED_THOUSAND;
-			}
-			else if (exchange >= FIFTY_THOUSAND)
-			{
-				fiftyThousandNote = (int)exchange / FIFTY_THOUSAND;
-				exchange = exchange - fiftyThousandNote * FIFTY_THOUSAND;
-			}
-			else if (exchange >= TWENTY_THOUSAND)
-			{
-				twoThousandNote = (int)exchange / TWENTY_THOUSAND;
-				exchange = exchange - twoThousandNote * TWENTY_THOUSAND;
-			}
-			else if (exchange >= TEN_THOUSAND)
-			{
-				tenThousandNote = (int)exchange / TEN_THOUSAND;
-				exchange = exchange - tenThousandNote * TEN_THOUSAND;
-			}
-			else if (exchange >= FIVE_THOUSAND)
-			{
-				fiveThousandNote = (int)exchange / FIVE_THOUSAND;
-				exchange = exchange - fiveThousandNote * FIVE_THOUSAND;
-			}
-			else if (exchange >= TWO_THOUSAND)
-			{
-				twoThousandNote = (int)exchange / TWO_THOUSAND;
-				exchange = exchange - twoThousandNote * TWO_THOUSAND;
-			}
-			else if (exchange >= ONE_THOUSAND)
-			{
-				oneThousandNote = (int)exchange / ONE_THOUSAND;
-				exchange = exchange - oneHundreadThousandNote * ONE_THOUSAND;
-			}
-			else if (exchange >= FIVE_HUNDRED)
-			{
-				fiveHundreadNote = (int)exchange / FIVE_HUNDRED;
-				exchange = exchange - fiveHundreadNote * FIVE_HUNDRED;
-			}
+			countMoneyNote(fiveHundreadThousandNote, exchange, FIVE_HUNDRED_THOUSAND);
+			countMoneyNote(twoHundreadThousandNote, exchange, TWO_HUNDRED_THOUSAND);
+			countMoneyNote(oneHundreadThousandNote, exchange, ONE_HUNDRED_THOUSAND);
+			countMoneyNote(fiftyThousandNote, exchange, FIFTY_THOUSAND);
+			countMoneyNote(twentyThousandNote, exchange, TWENTY_THOUSAND);
+			countMoneyNote(tenThousandNote, exchange, TEN_THOUSAND);
+			countMoneyNote(fiveThousandNote, exchange, FIVE_THOUSAND);	
+			countMoneyNote(twoThousandNote, exchange, TWO_THOUSAND);			
+			countMoneyNote(oneThousandNote, exchange, ONE_THOUSAND);	
+			countMoneyNote(fiveHundreadNote, exchange, FIVE_HUNDRED);
 		}
 	}
-	
+
 	std::cout << "The amount used to change back to the customer is: " << std::endl;
-	std::cout << fiveHundreadThousandNote << " note 500 000 VND " << std::endl;
-	std::cout << twoHundreadThousandNote << " note 200 000 VND " << std::endl;
-	std::cout << oneHundreadThousandNote << " note 100 000 VND " << std::endl;
+	//It's better if using stl container
+	if (fiveHundreadThousandNote == 0 &&
+		twoHundreadThousandNote == 0 &&
+		oneHundreadThousandNote == 0 &&
+		fiftyThousandNote == 0 &&
+		twentyThousandNote == 0 &&
+		tenThousandNote == 0 &&
+		fiveThousandNote == 0 &&
+		twoThousandNote == 0 &&
+		oneThousandNote == 0 &&
+		fiveHundreadNote == 0)
+	{
+		std::cout << "Customer does not need to change the money!" << std::endl;
+	}
+	else
+	{
+		showNumberMoneyNote(fiveHundreadThousandNote,FIVE_HUNDRED_THOUSAND);
+		showNumberMoneyNote(twoHundreadThousandNote,TWO_HUNDRED_THOUSAND);
+		showNumberMoneyNote(oneHundreadThousandNote,ONE_HUNDRED_THOUSAND);
+		showNumberMoneyNote(fiftyThousandNote,FIFTY_THOUSAND);
+		showNumberMoneyNote(twentyThousandNote,TWENTY_THOUSAND);
+		showNumberMoneyNote(tenThousandNote,TEN_THOUSAND);
+		showNumberMoneyNote(fiveThousandNote,FIVE_THOUSAND);
+		showNumberMoneyNote(twoThousandNote,TWO_THOUSAND);
+		showNumberMoneyNote(oneThousandNote,ONE_THOUSAND);
+		showNumberMoneyNote(fiveHundreadNote,FIVE_HUNDRED);
+	}
+	
+}
 
-	std::cout << fiftyThousandNote << " note 50 000 VND " << std::endl;
-	std::cout << twentyThousandNote << " note 20 000 VND " << std::endl;
-	std::cout << tenThousandNote << " note 10 000 VND " << std::endl;
+//int main()
+int LoopAdvancemain()
+{
+	//input
+	float priceOfProduct = 0.f, customerPaid = 0.f;
+	float exchange = 0.f;
 
-	std::cout << fiveThousandNote << " note 5000 VND " << std::endl;
-	std::cout << twoThousandNote << " note 2000 VND " << std::endl;
-	std::cout << oneThousandNote << " note 1000 VND " << std::endl;
-	std::cout << fiveHundreadNote << " note 500 VND " << std::endl;
+	//output
+	//Amount to be paid by user
+	InputPrice(priceOfProduct, customerPaid);
+
+	exchange = customerPaid - priceOfProduct;
+	std::cout << "The amount the customer has to change: " << exchange << std::endl;
+
+	exchangeMoneyNote(exchange);
 
 	return 0;
 }
