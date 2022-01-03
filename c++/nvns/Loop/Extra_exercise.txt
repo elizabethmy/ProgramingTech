@@ -1,0 +1,12 @@
+1) Read the number:
+EX: 1 => One
+12 twelve
+24567 twenty four thousand five hundred sixty seven
+
+2) Input the password, after input each character, the character will display "*".
+
+3) Input 2 fractions, Perform addition, subtraction, multiplication, division
+
+4) Show the watch, 00:00:00 corresponding with hours:minutes:seconds. When press Enter 1s will add, Space to pause, ESC to exit.
+
+5) Dice game

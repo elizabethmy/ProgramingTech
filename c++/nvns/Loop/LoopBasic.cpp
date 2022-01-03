@@ -178,28 +178,47 @@ void findNumExersise3(int a, int b)
 	}
 }
 
+/*
+* Other way: a != b
+* if a > b: a -= b
+* if b < a: b -= a
+* if a == b: return a
+*/
 int UCLN(int a, int b)
 {
-	int n = (a > b) ? a : b;
-	int i = n;
-	for (; i > 0; i--)
+	int min = (a > b) ? a : b;
+	int max = (a < b) ? a : b;
+	
+	if (max == min)
 	{
-		if ((a % i == 0) && (b % i == 0))
+		return max;
+	}
+	else if (max % min == 0)
+	{
+		return min;
+	}
+	else
+	{
+		int i = min / 2;
+		for (; i > 0; i--)
 		{
-			return i;
+			if ((a % i == 0) && (b % i == 0))
+			{
+				return i;
+			}
 		}
 	}
 	
 }
 
-void Fibonacy(int n)
+void Fibonacy(unsigned long long int n)
 {
-	int a0 = 1;
-	int a1 = 1, i = 0;
+	unsigned long long int a0 = 1;
+	unsigned long long int a1 = 1, i = 0;
 	std::cout << a0 << " " << a1;
 	for (; i < n; i++)
 	{
-		int c = a1 + a0;
+		unsigned long long int c = a1 + a0;
 		a0 = a1;
 		a1 = c;
 		
@@ -250,12 +269,15 @@ int LoopBasicmain()
 	findNumExersise3(a, b);
 
 	//output 4
-	std::cout << "UCLN " << a << " & " << b << ": " << UCLN(a,b) << std::endl;
+	std::cout << "UCLN is:  " << a << " & " << b << ": " << UCLN(a,b) << std::endl;
 
 	//output 5
+	unsigned long long int fibonacyList = 0;
 	std::cout << " " << std::endl;
-	std::cout << " Fibonacy " << std::endl;
-	Fibonacy(n);
+	std::cout << " Fibonacy list: " << std::endl;
+	std::cout << "Input n number: " << std::endl;
+	std::cin >> fibonacyList;
+	Fibonacy(fibonacyList);
 
 	return 0;
 }
