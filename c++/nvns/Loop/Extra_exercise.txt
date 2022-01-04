@@ -1,3 +1,4 @@
+// ExtraExercises
 1) Read the number:
 EX: 1 => One
 12 twelve
@@ -7,6 +8,7 @@ EX: 1 => One
 
 3) Input 2 fractions, Perform addition, subtraction, multiplication, division
 
+// StopWatch
 4) Show the watch, 00:00:00 corresponding with hours:minutes:seconds. When press Enter 1s will add, Space to pause, ESC to exit.
-
+// DiceGame
 5) Dice game
