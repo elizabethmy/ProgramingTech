@@ -35,7 +35,6 @@ binary/Pack
 **/msvc/packages
 **/msvc/packages.config
 *.vspx
-**/.vscode
 *.VC.db
 assert.log
 *.CHM

@@ -19,7 +19,7 @@ enum CurrencDenomination //VND
 };
 
 //Input price and the money user give
-void InputPrice(float& priceOfProduct, float& moneyUserGiven)
+void InputPrice(float &priceOfProduct, float &moneyUserGiven)
 {
 	do
 	{
@@ -31,20 +31,19 @@ void InputPrice(float& priceOfProduct, float& moneyUserGiven)
 	} while (priceOfProduct < 0.f || (moneyUserGiven - priceOfProduct) < 0.f);
 }
 
-void showNumberMoneyNote(int moneyNote,int denomination)
+void showNumberMoneyNote(int moneyNote, int denomination)
 {
 	if (moneyNote == 1)
 	{
-		std::cout << "1 note "<< denomination << " VND " << std::endl;
+		std::cout << "1 note " << denomination << " VND " << std::endl;
 	}
 	else if (moneyNote > 1)
 	{
 		std::cout << moneyNote << " notes " << denomination << " VND " << std::endl;
 	}
-
 }
 
-void countMoneyNote(int& moneyNote, float& remainderExchange, int  denomination)
+void countMoneyNote(int &moneyNote, float &remainderExchange, int denomination)
 {
 	if (remainderExchange >= FIVE_HUNDRED)
 	{
@@ -80,9 +79,9 @@ void exchangeMoneyNote(float exchange)
 			countMoneyNote(fiftyThousandNote, exchange, FIFTY_THOUSAND);
 			countMoneyNote(twentyThousandNote, exchange, TWENTY_THOUSAND);
 			countMoneyNote(tenThousandNote, exchange, TEN_THOUSAND);
-			countMoneyNote(fiveThousandNote, exchange, FIVE_THOUSAND);	
-			countMoneyNote(twoThousandNote, exchange, TWO_THOUSAND);			
-			countMoneyNote(oneThousandNote, exchange, ONE_THOUSAND);	
+			countMoneyNote(fiveThousandNote, exchange, FIVE_THOUSAND);
+			countMoneyNote(twoThousandNote, exchange, TWO_THOUSAND);
+			countMoneyNote(oneThousandNote, exchange, ONE_THOUSAND);
 			countMoneyNote(fiveHundreadNote, exchange, FIVE_HUNDRED);
 		}
 	}
@@ -104,18 +103,17 @@ void exchangeMoneyNote(float exchange)
 	}
 	else
 	{
-		showNumberMoneyNote(fiveHundreadThousandNote,FIVE_HUNDRED_THOUSAND);
-		showNumberMoneyNote(twoHundreadThousandNote,TWO_HUNDRED_THOUSAND);
-		showNumberMoneyNote(oneHundreadThousandNote,ONE_HUNDRED_THOUSAND);
-		showNumberMoneyNote(fiftyThousandNote,FIFTY_THOUSAND);
-		showNumberMoneyNote(twentyThousandNote,TWENTY_THOUSAND);
-		showNumberMoneyNote(tenThousandNote,TEN_THOUSAND);
-		showNumberMoneyNote(fiveThousandNote,FIVE_THOUSAND);
-		showNumberMoneyNote(twoThousandNote,TWO_THOUSAND);
-		showNumberMoneyNote(oneThousandNote,ONE_THOUSAND);
-		showNumberMoneyNote(fiveHundreadNote,FIVE_HUNDRED);
+		showNumberMoneyNote(fiveHundreadThousandNote, FIVE_HUNDRED_THOUSAND);
+		showNumberMoneyNote(twoHundreadThousandNote, TWO_HUNDRED_THOUSAND);
+		showNumberMoneyNote(oneHundreadThousandNote, ONE_HUNDRED_THOUSAND);
+		showNumberMoneyNote(fiftyThousandNote, FIFTY_THOUSAND);
+		showNumberMoneyNote(twentyThousandNote, TWENTY_THOUSAND);
+		showNumberMoneyNote(tenThousandNote, TEN_THOUSAND);
+		showNumberMoneyNote(fiveThousandNote, FIVE_THOUSAND);
+		showNumberMoneyNote(twoThousandNote, TWO_THOUSAND);
+		showNumberMoneyNote(oneThousandNote, ONE_THOUSAND);
+		showNumberMoneyNote(fiveHundreadNote, FIVE_HUNDRED);
 	}
-	
 }
 
 //int main()

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <conio.h>
 #include <limits>
+#include <cmath>
 
 /*
 * 1) Read the number:
@@ -185,7 +186,7 @@ void showNumberFourToNineDigit(int number)
 	int firstThreeNumber = 0;
 	int lastNumber = 0;
 	digit = log10(number);
-	
+
 	if (digit < 6)
 	{
 		firstThreeNumber = number / 1000;
@@ -275,23 +276,8 @@ void ReadNumber(int number)
 	std::cout << "" << std::endl;
 }
 
-//2) Input the password, after input each character, the character will display "*".
-void ActionFractions()
+void InputNumberToRead(int &number)
 {
-}
-
-//3
-void InputPassword()
-{
-}
-
-int main()
-//int ExtraExercises()
-{
-	/*
-	* 1) Read number
-	*/
-	/*int number = 0;
 	do
 	{
 		std::cout << "Input the number to read: ";
@@ -302,37 +288,168 @@ int main()
 
 		std::cin >> number;
 	} while (number < 0 && log10(number) > 8);
+}
 
-	ReadNumber(number);*/
+//2) Input the password, after input each character, the character will display "*".
+struct Fraction
+{
+	int numerator = 0;
+	int denominator = 0;
+};
 
-	/*
-	* 2) Input password
-	*/
+int UCLN(int a, int b)
+{
+	int min = (a > b) ? a : b;
+	int max = (a < b) ? a : b;
+
+	if (max == min)
+	{
+		return max;
+	}
+	else if (max % min == 0)
+	{
+		return min;
+	}
+	else
+	{
+		int i = min / 2;
+		for (; i > 0; i--)
+		{
+			if ((a % i == 0) && (b % i == 0))
+			{
+				return i;
+			}
+		}
+	}
+	return 1;
+}
+
+void Compact(Fraction &f)
+{
+	int ucln = UCLN(f.numerator, f.denominator);
+	f.numerator /= ucln;
+	f.denominator /= ucln;
+}
+
+Fraction Sum(Fraction f1, Fraction f2)
+{
+	Fraction result;
+	result.numerator = f1.numerator + f2.numerator;
+	result.denominator = f1.denominator + f2.denominator;
+	Compact(result);
+	return result;
+}
+
+Fraction Subtract(Fraction f1, Fraction f2)
+{
+	Fraction result;
+	result.numerator = f1.numerator - f2.numerator;
+	result.denominator = f1.denominator - f2.denominator;
+	Compact(result);
+	return result;
+}
+
+Fraction Multiply(Fraction f1, Fraction f2)
+{
+	Fraction result;
+	result.numerator = f1.numerator * f2.numerator;
+	result.denominator = f1.denominator * f2.denominator;
+	Compact(result);
+	return result;
+}
+
+Fraction Divide(Fraction f1, Fraction f2)
+{
+	Fraction result;
+	result.numerator = f1.numerator * f2.denominator;
+	result.denominator = f1.denominator * f2.numerator;
+	Compact(result);
+	return result;
+}
+
+void InputFractions(Fraction &f)
+{
+	do
+	{
+		std::cout << "Input the numerator: ";
+		std::cin >> f.numerator;
+		std::cout << "" << std::endl;
+		std::cout << "Input the demoninator: ";
+		std::cin >> f.denominator;
+	} while (f.numerator < 0 && f.denominator <= 0);
+}
+
+void ShowFraction(Fraction f)
+{
+	std::cout << "Numerator: " << f.numerator << std::endl;
+	std::cout << "Denominator: " << f.denominator << std::endl;
+}
+
+//3
+void InputPassword()
+{
 	std::string username = "";
 	char password[10] = "";
 
 	std::cout << "Input the user name: ";
 	std::cin >> username;
 	std::cout << "" << std::endl;
-	
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+	//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::cout << "Input the password (9 letters): ";
 	int count = 0;
 	do
 	{
 		password[count] = _getch();
 		_putch('*');
-		std::cout << "Hello password! " << password[count];
-		if (std::cin.get() == '\n')
-		{
-			std::cout << "Finish! " << std::endl;
-			break;
-		}
-		
+		// if (std::cin.get() == '\n')
+		// {
+		// 	std::cout << "Finish! " << std::endl;
+		// 	break;
+		// }
+
 		count++;
 	} while (count < 9);
 	std::cout << "\n Show the password: " << password << std::endl;
 	getchar();
+}
 
+int main()
+//int ExtraExercises()
+{
+	/*
+	* 1) Read number
+	*/
+	// int number = 0;
+	// InputNumberToRead(number);
+	// ReadNumber(number);
+
+	/*
+	* 2) Fraction
+	*/
+	Fraction f1, f2;
+	InputFractions(f1);
+	InputFractions(f2);
+	Fraction result;
+	result = Sum(f1, f2);
+	std::cout << "Sum of 2 fractions: " << std::endl;
+	ShowFraction(result);
+
+	result = Subtract(f1, f2);
+	std::cout << "Subtract of 2 fractions: " << std::endl;
+	ShowFraction(result);
+
+	result = Multiply(f1, f2);
+	std::cout << "Multiply of 2 fractions: " << std::endl;
+	ShowFraction(result);
+
+	result = Divide(f1, f2);
+	std::cout << "Divide of 2 fractions: " << std::endl;
+	ShowFraction(result);
+
+	/*
+	* 3) Input password
+	*/
+	//InputPassword();
 	return 0;
 }

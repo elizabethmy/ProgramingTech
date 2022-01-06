@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 bool isSymmetricalNumber(int n)
 {
@@ -76,7 +77,7 @@ bool isPrimeNumber(int n)
 		return false;
 	}
 
-	for (; i <= (int)sqrt((double)n); i+=2)
+	for (; i <= (int)sqrt((double)n); i += 2)
 	{
 		if (n % i == 0)
 		{
@@ -99,7 +100,8 @@ bool isAscendingNumber(int n)
 			remainder = n % 10;
 			n = n / 10;
 		}
-		else {
+		else
+		{
 			return false;
 		}
 	}
@@ -118,7 +120,8 @@ bool isDescendingNumber(int n)
 		{
 			remainder = n % 10;
 		}
-		else {
+		else
+		{
 			return false;
 		}
 	}
@@ -188,7 +191,7 @@ int UCLN(int a, int b)
 {
 	int min = (a > b) ? a : b;
 	int max = (a < b) ? a : b;
-	
+
 	if (max == min)
 	{
 		return max;
@@ -208,7 +211,7 @@ int UCLN(int a, int b)
 			}
 		}
 	}
-	
+	return 1;
 }
 
 void Fibonacy(unsigned long long int n)
@@ -221,15 +224,13 @@ void Fibonacy(unsigned long long int n)
 		unsigned long long int c = a1 + a0;
 		a0 = a1;
 		a1 = c;
-		
+
 		std::cout << " " << a1;
 	}
-
-
 }
 
-//int main()
-int LoopBasicmain()
+int main()
+//int LoopBasicmain()
 {
 	//input 1
 	int n;
@@ -269,7 +270,7 @@ int LoopBasicmain()
 	findNumExersise3(a, b);
 
 	//output 4
-	std::cout << "UCLN is:  " << a << " & " << b << ": " << UCLN(a,b) << std::endl;
+	std::cout << "UCLN is:  " << a << " & " << b << ": " << UCLN(a, b) << std::endl;
 
 	//output 5
 	unsigned long long int fibonacyList = 0;
