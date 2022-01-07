@@ -1,12 +1,14 @@
 [http]
 	postBuffer = 524288000
 [filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 [core]
-	editor = \"C:\\Users\\my.lethidiem\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\" --wait
+	editor = \"C:\\Users\\lethi\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\" --wait
 	longpaths = true
 	autocrlf = true
 [user]
