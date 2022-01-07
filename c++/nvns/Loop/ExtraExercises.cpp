@@ -334,8 +334,8 @@ void Compact(Fraction &f)
 Fraction Sum(Fraction f1, Fraction f2)
 {
 	Fraction result;
-	result.numerator = f1.numerator + f2.numerator;
-	result.denominator = f1.denominator + f2.denominator;
+	result.numerator = f1.numerator * f2.denominator + f1.denominator * f2.numerator;
+	result.denominator = f1.denominator * f2.denominator;
 	Compact(result);
 	return result;
 }
@@ -343,8 +343,8 @@ Fraction Sum(Fraction f1, Fraction f2)
 Fraction Subtract(Fraction f1, Fraction f2)
 {
 	Fraction result;
-	result.numerator = f1.numerator - f2.numerator;
-	result.denominator = f1.denominator - f2.denominator;
+	result.numerator = f1.numerator * f2.denominator - f1.denominator * f2.numerator;
+	result.denominator = f1.denominator * f2.denominator;
 	Compact(result);
 	return result;
 }
@@ -385,6 +385,29 @@ void ShowFraction(Fraction f)
 	std::cout << "Denominator: " << f.denominator << std::endl;
 }
 
+void ActionFractions(Fraction &f1, Fraction &f2)
+{
+	Fraction result;
+	InputFractions(f1);
+	InputFractions(f2);
+
+	result = Sum(f1, f2);
+	std::cout << "Sum of 2 fractions: " << std::endl;
+	ShowFraction(result);
+
+	result = Subtract(f1, f2);
+	std::cout << "Subtract of 2 fractions: " << std::endl;
+	ShowFraction(result);
+
+	result = Multiply(f1, f2);
+	std::cout << "Multiply of 2 fractions: " << std::endl;
+	ShowFraction(result);
+
+	result = Divide(f1, f2);
+	std::cout << "Divide of 2 fractions: " << std::endl;
+	ShowFraction(result);
+}
+
 //3
 void InputPassword()
 {
@@ -420,7 +443,7 @@ int main()
 	/*
 	* 1) Read number
 	*/
-	// int number = 0;
+	int number = 0;
 	// InputNumberToRead(number);
 	// ReadNumber(number);
 
@@ -428,24 +451,7 @@ int main()
 	* 2) Fraction
 	*/
 	Fraction f1, f2;
-	InputFractions(f1);
-	InputFractions(f2);
-	Fraction result;
-	result = Sum(f1, f2);
-	std::cout << "Sum of 2 fractions: " << std::endl;
-	ShowFraction(result);
-
-	result = Subtract(f1, f2);
-	std::cout << "Subtract of 2 fractions: " << std::endl;
-	ShowFraction(result);
-
-	result = Multiply(f1, f2);
-	std::cout << "Multiply of 2 fractions: " << std::endl;
-	ShowFraction(result);
-
-	result = Divide(f1, f2);
-	std::cout << "Divide of 2 fractions: " << std::endl;
-	ShowFraction(result);
+	ActionFractions(f1, f2);
 
 	/*
 	* 3) Input password
