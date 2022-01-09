@@ -1,7 +1,7 @@
 #include <iostream>
 
-//int main()
-int DiceGame()
+int main()
+//int DiceGame()
 {
 	return 0;
 }

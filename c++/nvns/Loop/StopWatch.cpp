@@ -25,53 +25,45 @@ void UpdateWatch()
 	int isStopwatchWork = 1;
 	while (1)
 	{
-		if (isStopwatchWork == 1)
+		std::cout << std::setfill('0') << std::setw(2) << stopWatch.hours << ":";
+		std::cout << std::setfill('0') << std::setw(2) << stopWatch.minutes << ":";
+		std::cout << std::setfill('0') << std::setw(2) << stopWatch.seconds;
+		std::cout << std::endl
+				  << "SPACE: Pause"
+				  << "\t\t\tESC: Exit";
+		if (GetAsyncKeyState(VK_SPACE))
 		{
-			std::cout << std::setfill('0') << std::setw(2) << stopWatch.hours << ":";
-			std::cout << std::setfill('0') << std::setw(2) << stopWatch.minutes << ":";
-			std::cout << std::setfill('0') << std::setw(2) << stopWatch.seconds;
-			std::cout << std::endl
-					  << "SPACE: Pause"
-					  << "\t\t\tESC: Exit";
-			if (GetAsyncKeyState(VK_SPACE))
+			while (true)
 			{
-				isStopwatchWork = 0;
-				continue;
+				if (GetAsyncKeyState(VK_SPACE))
+				{
+					Sleep(1000);
+					break;
+				}
 			}
-			if (GetAsyncKeyState(VK_ESCAPE))
-			{
-				break;
-			}
+		}
+		if (GetAsyncKeyState(VK_ESCAPE))
+		{
+			break;
+		}
 
-			if (stopWatch.seconds == LIMIT_COUNT)
-			{
-				stopWatch.minutes++;
-				stopWatch.seconds = 0;
-			}
-			else if (stopWatch.minutes == LIMIT_COUNT)
-			{
-				stopWatch.hours++;
-				stopWatch.minutes = 0;
-			}
-			else if (stopWatch.hours == LIMIT_COUNT_HOURS)
-			{
-				Reset(stopWatch);
-			}
-			stopWatch.seconds++;
-			Sleep(1000);
-			system("cls");
-		}
-		else
+		if (stopWatch.seconds == LIMIT_COUNT)
 		{
-			if (GetAsyncKeyState(VK_SPACE))
-			{
-				isStopwatchWork = 1;
-				Sleep(1000);
-				system("cls");
-				stopWatch.seconds++;
-				continue;
-			}
+			stopWatch.minutes++;
+			stopWatch.seconds = 0;
 		}
+		else if (stopWatch.minutes == LIMIT_COUNT)
+		{
+			stopWatch.hours++;
+			stopWatch.minutes = 0;
+		}
+		else if (stopWatch.hours == LIMIT_COUNT_HOURS)
+		{
+			Reset(stopWatch);
+		}
+		stopWatch.seconds++;
+		Sleep(1000);
+		system("cls");
 	}
 }
 
