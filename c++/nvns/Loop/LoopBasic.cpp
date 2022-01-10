@@ -65,7 +65,11 @@ bool isPrimeNumber(int n)
 	//special case:1,2,3 and ,5,7,11,13,17...
 	//i=0...(n-1), if n % i == 0 => not prime
 	//does not care even number
-	if (n == 1 || n == 2 || n == 3)
+	if (n == 1)
+	{
+		return false;
+	}
+	if (n == 2 || n == 3)
 	{
 		return true;
 	}
