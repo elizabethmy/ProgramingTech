@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-//1
+// 1
 void UpperToLowerCase(char &c)
 {
 	if (c >= 65 && c <= 90)
@@ -127,7 +127,7 @@ int minOf4Number(int a, int b, int c, int d)
 
 void Swap(int &a, int &b)
 {
-	//way 1
+	// way 1
 	int temp = a;
 	a = b;
 	b = temp;
@@ -141,7 +141,7 @@ void Swap(int &a, int &b)
 
 void soft4Numbers(int &a, int &b, int &c, int &d)
 {
-	//a
+	// a
 	if (a > b)
 	{
 		Swap(a, b);
@@ -154,7 +154,7 @@ void soft4Numbers(int &a, int &b, int &c, int &d)
 	{
 		Swap(a, d);
 	}
-	//b
+	// b
 	if (b > c)
 	{
 		Swap(b, c);
@@ -163,14 +163,14 @@ void soft4Numbers(int &a, int &b, int &c, int &d)
 	{
 		Swap(b, d);
 	}
-	//c
+	// c
 	if (c > d)
 	{
 		Swap(c, d);
 	}
 }
 
-//2
+// 2
 void InputNumber(int &n)
 {
 	do
@@ -242,7 +242,7 @@ int S5(int n)
 
 int main()
 {
-	//1
+	// 1
 	SolveQuadratic();
 
 	int a = 0, b = 0, c = 0, d = 0;
@@ -252,7 +252,7 @@ int main()
 	soft4Numbers(a, b, c, d);
 	std::cout << "Min of 4 numbers: " << a << " " << b << " " << c << " " << d << " " << std::endl;
 
-	//2
+	// 2
 	int n = 0;
 	InputNumber(n);
 	std::cout << "S1: " << S1(n) << std::endl;

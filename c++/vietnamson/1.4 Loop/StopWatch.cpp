@@ -68,7 +68,7 @@ void UpdateWatch()
 }
 
 int main()
-//int StopWatch()
+// int StopWatch()
 {
 	UpdateWatch();
 	return 0;

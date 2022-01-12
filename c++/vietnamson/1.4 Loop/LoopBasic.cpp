@@ -3,8 +3,8 @@
 
 bool isSymmetricalNumber(int n)
 {
-	//121, 1221...
-	//1221%10 reverse number => a[0..num-1] s = s + a[i] => compare s va n
+	// 121, 1221...
+	// 1221%10 reverse number => a[0..num-1] s = s + a[i] => compare s va n
 	int reverseNumber = 0;
 	int temp = n;
 	while (n > 0)
@@ -22,8 +22,8 @@ bool isSymmetricalNumber(int n)
 
 bool isSquareNumber(int n)
 {
-	//1,4,9...
-	//i=0...[sqNum (= sqrt(n))],sqNum < n/2, compare pow(i) & n%10
+	// 1,4,9...
+	// i=0...[sqNum (= sqrt(n))],sqNum < n/2, compare pow(i) & n%10
 	if (n == 1)
 	{
 		return true;
@@ -41,17 +41,17 @@ bool isSquareNumber(int n)
 }
 bool isSquareNumberWay2(int n)
 {
-	//1,4,9...
+	// 1,4,9...
 	/*
-	* Compare sqrt
-	*/
+	 * Compare sqrt
+	 */
 	if (n == 1)
 	{
 		return true;
 	}
 	/*
-	* Compare sqrt
-	*/
+	 * Compare sqrt
+	 */
 	if (sqrt((double)n) == (int)sqrt((double)n))
 	{
 		return true;
@@ -62,9 +62,9 @@ bool isSquareNumberWay2(int n)
 
 bool isPrimeNumber(int n)
 {
-	//special case:1,2,3 and ,5,7,11,13,17...
-	//i=0...(n-1), if n % i == 0 => not prime
-	//does not care even number
+	// special case:1,2,3 and ,5,7,11,13,17...
+	// i=0...(n-1), if n % i == 0 => not prime
+	// does not care even number
 	if (n == 1)
 	{
 		return false;
@@ -74,7 +74,7 @@ bool isPrimeNumber(int n)
 		return true;
 	}
 
-	//int i = (n - 1) / 2;
+	// int i = (n - 1) / 2;
 	int i = 3;
 	if (n > 3 && (n % 2) == 0)
 	{
@@ -93,13 +93,13 @@ bool isPrimeNumber(int n)
 
 bool isAscendingNumber(int n)
 {
-	//11, 123, 11223,...
-	//remainder = n%10, n=n%10, i2 = n%10, if remainder > i2 > i3 > i4 ...true
+	// 11, 123, 11223,...
+	// remainder = n%10, n=n%10, i2 = n%10, if remainder > i2 > i3 > i4 ...true
 	int remainder = n % 10;
 	n = n / 10;
 	while (n / 10 != 0)
 	{
-		if (remainder >= (n % 10)) //remainder > i2
+		if (remainder >= (n % 10)) // remainder > i2
 		{
 			remainder = n % 10;
 			n = n / 10;
@@ -114,13 +114,13 @@ bool isAscendingNumber(int n)
 
 bool isDescendingNumber(int n)
 {
-	//11, 321, 32211,...
-	//remainder = n%10, n=n%10, i2 = n%10, if remainder < i2 < i3 < i4 ...true
+	// 11, 321, 32211,...
+	// remainder = n%10, n=n%10, i2 = n%10, if remainder < i2 < i3 < i4 ...true
 	int remainder = n % 10;
 	while (n / 10 != 0)
 	{
 		n = n / 10;
-		if (remainder <= (n % 10)) //i1 < i2
+		if (remainder <= (n % 10)) // i1 < i2
 		{
 			remainder = n % 10;
 		}
@@ -131,7 +131,7 @@ bool isDescendingNumber(int n)
 	}
 	return true;
 }
-//check number synmetric, square, prime in [a,b]
+// check number synmetric, square, prime in [a,b]
 void specialNumberIdentifier(int a, int b)
 {
 	int synmetricNumberQuantity = 0, squareNumberQuantity = 0, primeNumberQuantity = 0;
@@ -186,11 +186,11 @@ void findNumExersise3(int a, int b)
 }
 
 /*
-* Other way: a != b
-* if a > b: a -= b
-* if b < a: b -= a
-* if a == b: return a
-*/
+ * Other way: a != b
+ * if a > b: a -= b
+ * if b < a: b -= a
+ * if a == b: return a
+ */
 int UCLN(int a, int b)
 {
 	int min = (a > b) ? a : b;
@@ -234,21 +234,21 @@ void Fibonacy(unsigned long long int n)
 }
 
 int main()
-//int LoopBasicmain()
+// int LoopBasicmain()
 {
-	//input 1
+	// input 1
 	int n;
 	std::cout << "Input number n: " << std::endl;
 	std::cin >> n;
 	std::cout << " " << std::endl;
-	//check n
+	// check n
 	std::cout << "isSymmetricalNumber: " << isSymmetricalNumber(n) << " " << std::endl;
 	std::cout << "isSquareNumber: " << isSquareNumber(n) << " " << std::endl;
 	std::cout << "isPrimeNumber: " << isPrimeNumber(n) << " " << std::endl;
 	std::cout << "isAscendingNumber: " << isAscendingNumber(n) << " " << std::endl;
 	std::cout << "isDescendingNumber: " << isDescendingNumber(n) << " " << std::endl;
 
-	//input 2
+	// input 2
 	int a = 0, b = 0;
 	do
 	{
@@ -261,7 +261,7 @@ int main()
 	} while (b < a);
 	specialNumberIdentifier(a, b);
 
-	//output 3
+	// output 3
 	do
 	{
 		std::cout << " " << std::endl;
@@ -273,10 +273,10 @@ int main()
 	} while ((a < 10 && a > 99) || (b < 10 && b > 99));
 	findNumExersise3(a, b);
 
-	//output 4
+	// output 4
 	std::cout << "UCLN is:  " << a << " & " << b << ": " << UCLN(a, b) << std::endl;
 
-	//output 5
+	// output 5
 	unsigned long long int fibonacyList = 0;
 	std::cout << " " << std::endl;
 	std::cout << " Fibonacy list: " << std::endl;

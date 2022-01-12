@@ -4,11 +4,11 @@
 #include <cmath>
 
 /*
-* 1) Read the number:
-* EX: 1 => One
-* 12 twelve
-* 24567 twenty four thousand five hundred sixty seven
-*/
+ * 1) Read the number:
+ * EX: 1 => One
+ * 12 twelve
+ * 24567 twenty four thousand five hundred sixty seven
+ */
 void showString(std::string numberString)
 {
 	std::cout << numberString;
@@ -135,7 +135,7 @@ void showNumberTwoDigitWithUnitZero(int number)
 		showString("Fifty");
 	};
 	break;
-	default: //60,70,80,90
+	default: // 60,70,80,90
 	{
 		showNumberLower16(dozen);
 		showString("ty");
@@ -249,29 +249,29 @@ void ReadNumber(int number)
 {
 	int digit = log10(number);
 	std::cout << "The number " << number << " is read as: ";
-	//1 digit
+	// 1 digit
 	if (number < 20)
 	{
 		showNumberLower20(number);
 	}
-	//2 digits
+	// 2 digits
 	else if (digit == 1)
 	{
 		showNumberTwoDigit(number);
 	}
-	//3 digits
+	// 3 digits
 	else if (digit == 2)
 	{
 		showNumberThreeDigit(number);
 	}
-	//3 => 9 digits
+	// 3 => 9 digits
 	else if (digit > 2 && digit < 9)
 	{
 		showNumberFourToNineDigit(number);
 	}
 	else
 	{
-		//TO DO
+		// TO DO
 	}
 	std::cout << "" << std::endl;
 }
@@ -290,7 +290,7 @@ void InputNumberToRead(int &number)
 	} while (number < 0 && log10(number) > 8);
 }
 
-//2) Input the password, after input each character, the character will display "*".
+// 2) Input the password, after input each character, the character will display "*".
 struct Fraction
 {
 	int numerator = 0;
@@ -408,7 +408,7 @@ void ActionFractions(Fraction &f1, Fraction &f2)
 	ShowFraction(result);
 }
 
-//3
+// 3
 void InputPassword()
 {
 	std::string username = "";
@@ -418,7 +418,7 @@ void InputPassword()
 	std::cin >> username;
 	std::cout << "" << std::endl;
 
-	//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::cout << "Input the password (9 letters): ";
 	int count = 0;
 	do
@@ -438,24 +438,24 @@ void InputPassword()
 }
 
 int main()
-//int ExtraExercises()
+// int ExtraExercises()
 {
 	/*
-	* 1) Read number
-	*/
+	 * 1) Read number
+	 */
 	int number = 0;
 	// InputNumberToRead(number);
 	// ReadNumber(number);
 
 	/*
-	* 2) Fraction
-	*/
+	 * 2) Fraction
+	 */
 	Fraction f1, f2;
 	ActionFractions(f1, f2);
 
 	/*
-	* 3) Input password
-	*/
-	//InputPassword();
+	 * 3) Input password
+	 */
+	// InputPassword();
 	return 0;
 }

@@ -1,10 +1,10 @@
 #include <iostream>
 /**
-* Product: price of product, quantity
-* Customer: give money
-* Saleman: exchange money
-*/
-enum CurrencDenomination //VND
+ * Product: price of product, quantity
+ * Customer: give money
+ * Saleman: exchange money
+ */
+enum CurrencDenomination // VND
 {
 	FIVE_HUNDRED_THOUSAND = 500000,
 	TWO_HUNDRED_THOUSAND = 200000,
@@ -18,7 +18,7 @@ enum CurrencDenomination //VND
 	FIVE_HUNDRED = 500
 };
 
-//Input price and the money user give
+// Input price and the money user give
 void InputPrice(float &priceOfProduct, float &moneyUserGiven)
 {
 	do
@@ -45,14 +45,14 @@ void showNumberMoneyNote(int moneyNote, int denomination)
 
 void countMoneyNote(int &moneyNote, float &remainderExchange, int denomination)
 {
-	if (remainderExchange >= FIVE_HUNDRED)
+	if ((int)remainderExchange >= denomination)
 	{
 		moneyNote = (int)remainderExchange / denomination;
 		remainderExchange = remainderExchange - moneyNote * denomination;
 	}
 }
 
-//The customer's balance is refunded
+// The customer's balance is refunded
 void exchangeMoneyNote(float exchange)
 {
 	int fiveHundreadThousandNote = 0;
@@ -87,7 +87,7 @@ void exchangeMoneyNote(float exchange)
 	}
 
 	std::cout << "The amount used to change back to the customer is: " << std::endl;
-	//It's better if using stl container
+	// It's better if using stl container
 	if (fiveHundreadThousandNote == 0 &&
 		twoHundreadThousandNote == 0 &&
 		oneHundreadThousandNote == 0 &&
@@ -116,15 +116,15 @@ void exchangeMoneyNote(float exchange)
 	}
 }
 
-//int main()
-int LoopAdvancemain()
+int main()
+// int LoopAdvancemain()
 {
-	//input
+	// input
 	float priceOfProduct = 0.f, customerPaid = 0.f;
 	float exchange = 0.f;
 
-	//output
-	//Amount to be paid by user
+	// output
+	// Amount to be paid by user
 	InputPrice(priceOfProduct, customerPaid);
 
 	exchange = customerPaid - priceOfProduct;
