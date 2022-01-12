@@ -167,6 +167,7 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+#Font: MesloLGS NF
 # Set up aliases
 alias gitgraph='git log --decorate --oneline --graph --abbrev-commit --format=format:"%C(bold yellow)%h%C(reset) %C(bold white)%<|(120,trunc)%s%C(reset) %C(bold dim green)%cL%C(reset) %C(bold magenta)(%ar %C(white)- %C(bold cyan)%cD)%C(reset) %C(auto)%d%C(reset)"'
 alias gitgraphstat='git log --decorate --oneline --graph --stat --abbrev-commit --format=format:"%C(bold yellow)%h%C(reset) %C(bold white)%s%C(reset) %C(bold dim green)%ce%C(reset) %C(bold magenta)(%ar %C(white)- %C(bold cyan)%cD)%C(reset)%C(auto)%d%C(reset)"'

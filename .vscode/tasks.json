@@ -3,13 +3,56 @@
 	"tasks": [
 		{
 			"type": "cppbuild",
+			"label": "C/C++: cl.exe build active file",
+			"command": "cl.exe",
+			"args": [
+				"/Zi",
+				"/EHsc",
+				"/nologo",
+				"/Fe:",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe",
+				"${file}"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build",
+			"detail": "compiler: cl.exe"
+		},
+		{
+			"type": "cppbuild",
+			"label": "C/C++: cl.exe build active file cpp latest",
+			"command": "cl.exe",
+			"args": [
+				"/Zi",
+				"/EHsc",
+				"/std:c++latest",
+				"/nologo",
+				"/Fe:",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe",
+				"${file}"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build",
+			"detail": "compiler: cl.exe"
+		},
+		{
+			"type": "cppbuild",
 			"label": "Build a folder with gcc cpp20",
 			"command": "C:\\Users\\lethi\\DevTools\\mingw64\\bin\\g++.exe",
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
 				"-std=c++20",
-				"${workspaceFolder}\\c++",
+				"${workspaceFolder}\\c++\\vietnamson\\1.4 Loop\\*.cpp",
 				"-o",
 				"${workspaceFolder}\\c++\\app.exe"
 			],
@@ -30,9 +73,9 @@
 				"-fdiagnostics-color=always",
 				"-g",
 				"-std=c++20",
-				"${workspaceFolder}\\c++",
 				"-o",
-				"${workspaceFolder}\\c++\\app.exe"
+				"${workspaceFolder}\\c++\\app.exe",
+				"${workspaceFolder}\\c++\\vietnamson\\*.cpp",
 			],
 			"options": {
 				"cwd": "${fileDirname}"
