@@ -63,7 +63,7 @@ void SolveQuadratic()
 	float root2 = 0;
 	int numberOfRoot = 0;
 
-	std::cout << "Solve quadractic function ax^2 + bx + c = 0: " << std::endl;
+	std::cout << "Solve quadratic function ax^2 + bx + c = 0: " << std::endl;
 	std::cout << std::endl
 			  << "Input the coefficient a: ";
 	std::cin >> a;

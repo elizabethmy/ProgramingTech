@@ -168,7 +168,7 @@ void specialNumberIdentifier(int a, int b)
 	std::cout << "Number of Prime Number: " << primeNumberQuantity << " " << std::endl;
 }
 
-void findNumExersise3(int a, int b)
+void findNumExercise3(int a, int b)
 {
 	int i = a;
 	for (; i <= b; i++)
@@ -218,7 +218,7 @@ int UCLN(int a, int b)
 	return 1;
 }
 
-void Fibonacy(unsigned long long int n)
+void Fibonacci(unsigned long long int n)
 {
 	unsigned long long int a0 = 1;
 	unsigned long long int a1 = 1, i = 0;
@@ -271,18 +271,18 @@ int main()
 		std::cin >> b;
 		std::cout << " " << std::endl;
 	} while ((a < 10 && a > 99) || (b < 10 && b > 99));
-	findNumExersise3(a, b);
+	findNumExercise3(a, b);
 
 	// output 4
 	std::cout << "UCLN is:  " << a << " & " << b << ": " << UCLN(a, b) << std::endl;
 
 	// output 5
-	unsigned long long int fibonacyList = 0;
+	unsigned long long int fibonacciList = 0;
 	std::cout << " " << std::endl;
-	std::cout << " Fibonacy list: " << std::endl;
+	std::cout << " Fibonacci list: " << std::endl;
 	std::cout << "Input n number: " << std::endl;
-	std::cin >> fibonacyList;
-	Fibonacy(fibonacyList);
+	std::cin >> fibonacciList;
+	Fibonacci(fibonacciList);
 
 	return 0;
 }
