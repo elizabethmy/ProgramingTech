@@ -455,7 +455,7 @@ int main()
 	InputNumber(n);
 
 	std::cout << std::endl
-			  << "Input n: " << std::endl;
+			  << "Input x: " << std::endl;
 	InputNumber(x);
 	std::cout << "" << std::endl;
 
