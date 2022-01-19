@@ -37,7 +37,7 @@ void Lowercase(char letter)
 bool isValidPlay(char input)
 {
 	Lowercase(input);
-	if (input == 's' || input == 'h' || input == 'b')
+	if (input == 's' || input == 'h' || input == 'b' || input == 'S' || input == 'H' || input == 'B')
 	{
 		return true;
 	}
@@ -188,11 +188,7 @@ bool isPerfectNumber(int number)
 			sum += i;
 		}
 	}
-	if (sum == number)
-	{
-		return true;
-	}
-	return false;
+	return sum == number;
 }
 
 /**
