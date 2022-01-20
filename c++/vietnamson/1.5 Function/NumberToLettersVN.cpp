@@ -108,6 +108,12 @@ void ReadOneDigit(int n)
 
 void ReadTwoDigits(int n)
 {
+	int numberOfDigit = NumberOfDigits(n);
+	if (numberOfDigit == 1)
+	{
+		ReadOneDigit(n);
+		return;
+	}
 	if (n == 10)
 	{
 		showString(" muoi ");
@@ -139,9 +145,30 @@ void ReadTwoDigits(int n)
 	}
 }
 
+void ReadRemainNumbers(int numberOfDigits)
+{
+	if (numberOfDigits == 1 || numberOfDigits == 4)
+	{
+		ReadOneDigit(0);
+		showString(" tram le ");
+	}
+	else if (numberOfDigits == 2 || numberOfDigits == 5)
+	{
+		ReadOneDigit(0);
+		showString(" tram ");
+	}
+}
+
 void ReadThreeDigits(int n)
 {
 	int dozen, twoDigits, numberOfDigits;
+	numberOfDigits = NumberOfDigits(n);
+
+	if (numberOfDigits <= 2)
+	{
+		ReadTwoDigits(n);
+		return;
+	}
 	dozen = n / 100;
 	twoDigits = n % 100;
 
@@ -163,41 +190,57 @@ void ReadThreeDigits(int n)
 void ReadFourDigit(int n)
 {
 	int dozen, threeDigits, numberOfDigits;
+	numberOfDigits = NumberOfDigits(n);
+
+	if (numberOfDigits <= 3)
+	{
+		ReadThreeDigits(n);
+		return;
+	}
+
 	dozen = n / 1000;
 	threeDigits = n % 1000;
-
 	numberOfDigits = NumberOfDigits(dozen);
-	if (numberOfDigits == 1)
-	{
-		ReadOneDigit(dozen);
-	}
-	else if (numberOfDigits == 2)
-	{
-		ReadTwoDigits(dozen);
-	}
-	else if (numberOfDigits == 3)
-	{
-		ReadThreeDigits(dozen);
-	}
 
+	ReadThreeDigits(dozen);
 	showString(" nghin ");
 
 	numberOfDigits = NumberOfDigits(threeDigits);
-	if (numberOfDigits == 1)
+
+	if (numberOfDigits > 0)
 	{
-		ReadOneDigit(0);
-		showString(" tram le ");
-		ReadOneDigit(threeDigits);
-	}
-	else if (numberOfDigits == 2)
-	{
-		ReadOneDigit(0);
-		showString(" tram ");
-		ReadTwoDigits(threeDigits);
-	}
-	else if (numberOfDigits == 3)
-	{
+		if (numberOfDigits != 3)
+		{
+			ReadRemainNumbers(numberOfDigits);
+		}
 		ReadThreeDigits(threeDigits);
+	}
+}
+
+void ReadSevenDigits(int n)
+{
+	int dozen, otherDigits, numberOfDigits;
+	numberOfDigits = NumberOfDigits(n);
+	if (numberOfDigits <= 6)
+	{
+		ReadFourDigit(n);
+		return;
+	}
+	dozen = n / 1000000;
+	otherDigits = n % 1000000;
+
+	numberOfDigits = NumberOfDigits(dozen);
+	ReadThreeDigits(dozen);
+	showString(" trieu ");
+
+	numberOfDigits = NumberOfDigits(otherDigits);
+	if (numberOfDigits > 0)
+	{
+		if (numberOfDigits != 6)
+		{
+			ReadRemainNumbers(numberOfDigits);
+		}
+		ReadFourDigit(otherDigits);
 	}
 }
 
@@ -217,9 +260,17 @@ void ReadNumber(int n)
 	{
 		ReadThreeDigits(n);
 	}
-	else if (numberOfDigits)
+	else if (numberOfDigits >= 4 && numberOfDigits <= 6)
 	{
 		ReadFourDigit(n);
+	}
+	else if (numberOfDigits >= 7 && numberOfDigits <= 9)
+	{
+		ReadSevenDigits(n);
+	}
+	else
+	{
+		showString("\n Currently, We still do not support this number! ");
 	}
 }
 
