@@ -13,7 +13,7 @@
 
 Dữ liệu nhập:
 
-- Là số nguyên N (0 ≤ N ≤ 18 chu so)
+- Là số nguyên N (0 ≤ N ≤ 21 chu so)
 
 Dữ liệu xuất:
 
