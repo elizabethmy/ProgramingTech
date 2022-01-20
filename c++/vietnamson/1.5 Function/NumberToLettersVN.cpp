@@ -13,19 +13,20 @@
 
 Dữ liệu nhập:
 
-- Là số nguyên N (0 ≤ N ≤ 999.999)
+- Là số nguyên N (0 ≤ N ≤ 18 chu so)
 
 Dữ liệu xuất:
 
 - Gồm một dòng kết quả là chuỗi tiếng Việt viết thường và không dấu, mỗi từ cách nhau một khoảng trắng.
+Ví dụ: 9223372036854775807, 1, 10, 11, 15, 21, 95, 100, 1000, 10001, 1020, 120023023, 1003023, 125000302, 124456789987, 123056789987, 12300008998....
  *
- * @return int
+ * @return
  */
 void showString(std::string str)
 {
 	std::cout << str;
 }
-void InputNumber(int &n)
+void InputNumber(unsigned long long &n)
 {
 	do
 	{
@@ -34,7 +35,7 @@ void InputNumber(int &n)
 	} while (n < 0 && n > 999999);
 }
 
-int NumberOfDigits(int n)
+int NumberOfDigits(unsigned long long n)
 {
 	return (int)log10((double)n) + 1;
 }
@@ -145,14 +146,14 @@ void ReadTwoDigits(int n)
 	}
 }
 
-void ReadRemainNumbers(int numberOfDigits)
+void ReadRemainNumbers(long long numberOfDigits)
 {
-	if (numberOfDigits == 1 || numberOfDigits == 4)
+	if (numberOfDigits == 1 || numberOfDigits == 4 || numberOfDigits == 7)
 	{
 		ReadOneDigit(0);
 		showString(" tram le ");
 	}
-	else if (numberOfDigits == 2 || numberOfDigits == 5)
+	else if (numberOfDigits == 2 || numberOfDigits == 5 || numberOfDigits == 8)
 	{
 		ReadOneDigit(0);
 		showString(" tram ");
@@ -217,7 +218,7 @@ void ReadFourDigit(int n)
 	}
 }
 
-void ReadSevenDigits(int n)
+void ReadSevenDigits(long long n)
 {
 	int dozen, otherDigits, numberOfDigits;
 	numberOfDigits = NumberOfDigits(n);
@@ -244,7 +245,43 @@ void ReadSevenDigits(int n)
 	}
 }
 
-void ReadNumber(int n)
+void ReadTenDigits(unsigned long long n)
+{
+	unsigned long long dozen, otherDigits, numberOfDigits;
+	numberOfDigits = NumberOfDigits(n);
+	if (numberOfDigits <= 9)
+	{
+		ReadSevenDigits(n);
+		return;
+	}
+	dozen = n / 1000000000;
+	otherDigits = n % 1000000000;
+
+	numberOfDigits = NumberOfDigits(dozen);
+
+	if (numberOfDigits >= 10)
+	{
+		ReadTenDigits(dozen);
+	}
+	else
+	{
+		ReadSevenDigits(dozen);
+	}
+	showString(" ty ");
+
+	numberOfDigits = NumberOfDigits(otherDigits);
+
+	if (numberOfDigits > 0)
+	{
+		if (numberOfDigits != 9)
+		{
+			ReadRemainNumbers(numberOfDigits);
+		}
+		ReadSevenDigits(otherDigits);
+	}
+}
+
+void ReadNumber(unsigned long long n)
 {
 	int numberOfDigits;
 	numberOfDigits = NumberOfDigits(n);
@@ -268,15 +305,16 @@ void ReadNumber(int n)
 	{
 		ReadSevenDigits(n);
 	}
-	else
+	else if (numberOfDigits >= 10)
 	{
-		showString("\n Currently, We still do not support this number! ");
+		// showString("\n Currently, We still do not support this number! ");
+		ReadTenDigits(n);
 	}
 }
 
 int main()
 {
-	int n;
+	unsigned long long n;
 	InputNumber(n);
 
 	ReadNumber(n);
