@@ -37,7 +37,7 @@ void InputNumber(unsigned long long &n)
 
 int NumberOfDigits(unsigned long long n)
 {
-	return (int)log10((double)n) + 1;
+	return (n == 0)?1:(int)log10((double)n) + 1;
 }
 
 void ReadOneDigit(int n)
