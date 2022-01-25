@@ -1,5 +1,10 @@
 #include <iostream>
 #include <cmath>
+#include <Windows.h>
+#include <fcntl.h>
+#include <io.h>
+#include <string>
+
 /**
  * ĐỀ BÀI:
  * @brief Ở Việt Nam, khi tính tiền hóa đơn, ngoài việc viết số tiền bằng các con số, người ta thường hay viết kèm số tiền bằng chữ để tránh các sai sót do đọc nhầm. Ví dụ:
@@ -73,14 +78,14 @@ void InputNumber(unsigned long long &n)
 {
 	do
 	{
-		std::cout << "Input Number: ";
-		std::cin >> n;
+		std::wcout << L"Nhập vô đi: ";
+		std::wcin >> n;
 	} while (n < 0);
 }
 
-void showString(std::string str)
+void showString(std::wstring str)
 {
-	std::cout << " " << str;
+	std::wcout << L" " << str;
 }
 
 int NumberOfDigits(unsigned long long n)
@@ -94,67 +99,67 @@ void ReadOneDigit(int n)
 	{
 	case 0:
 	{
-		showString("khong");
+		showString(L"không");
 	};
 	break;
 	case 1:
 	{
-		showString("mot");
+		showString(L"một");
 	};
 	break;
 	case 2:
 	{
-		showString("hai");
+		showString(L"hai");
 	};
 	break;
 	case 3:
 	{
-		showString("ba");
+		showString(L"ba");
 	};
 	break;
 	case 4:
 	{
-		showString("bon");
+		showString(L"bốn");
 	};
 	break;
 	case 5:
 	{
-		showString("nam");
+		showString(L"năm");
 	};
 	break;
 	case 6:
 	{
-		showString("sau");
+		showString(L"sáu");
 	};
 	break;
 	case 7:
 	{
-		showString("bay");
+		showString(L"bảy");
 	};
 	break;
 	case 8:
 	{
-		showString("tam");
+		showString(L"tám");
 	};
 	break;
 	case 9:
 	{
-		showString("chin");
+		showString(L"chín");
 	};
 	break;
 	case 10:
 	{
-		showString("muoi");
+		showString(L"mười");
 	};
 	break;
 	case 15:
 	{
-		showString("lam");
+		showString(L"lăm");
 	};
 	break;
 	case 21:
 	{
-		showString("mot");
+		showString(L"mốt");
 	};
 	break;
 	}
@@ -176,7 +181,7 @@ void ReadTwoDigits(int n)
 
 	if (head == 1)
 	{
-		showString("muoi");
+		showString(L"mười");
 		if (otherDigit == 5)
 		{
 			otherDigit = 15;
@@ -186,7 +191,7 @@ void ReadTwoDigits(int n)
 	else
 	{
 		ReadOneDigit(head);
-		showString("muoi");
+		showString(L"mươi");
 
 		if (otherDigit != 0)
 		{
@@ -218,12 +223,12 @@ void ReadThreeDigits(unsigned long long n)
 	otherDigit = n % 100;
 
 	ReadOneDigit(head);
-	showString("tram");
+	showString(L"trăm");
 	if (otherDigit != 0)
 	{
 		if (NumberOfDigits(otherDigit) == 1)
 		{
-			showString("le");
+			showString(L"lẻ");
 		}
 		ReadTwoDigits(otherDigit);
 	}
@@ -234,12 +239,12 @@ void ReadRemainNumbers(unsigned long long numberOfDigits)
 	if (numberOfDigits == 1 || numberOfDigits == 4 || numberOfDigits == 7)
 	{
 		ReadOneDigit(0);
-		showString(" tram le ");
+		showString(L"trăm lẻ");
 	}
 	else if (numberOfDigits == 2 || numberOfDigits == 5 || numberOfDigits == 8)
 	{
 		ReadOneDigit(0);
-		showString(" tram ");
+		showString(L"trăm");
 	}
 }
 
@@ -267,7 +272,7 @@ void ReadNumber(unsigned long long n)
 			powResult = (unsigned long long)pow(10, 3 * 3);
 			head = (unsigned long long)temp / powResult;
 			ReadNumber(head);
-			showString("ty");
+			showString(L"tỷ");
 		}
 		else
 		{
@@ -293,15 +298,15 @@ void ReadNumber(unsigned long long n)
 
 		if (dotma == 1)
 		{
-			showString("nghin");
+			showString(L"nghìn");
 		}
 		else if (dotma == 2)
 		{
-			showString("trieu");
+			showString(L"triệu");
 		}
 		else if (dotma == 3)
 		{
-			showString("ty");
+			showString(L"tỷ");
 		}
 
 		numberOfDigit = NumberOfDigits(temp);
@@ -312,6 +317,11 @@ void ReadNumber(unsigned long long n)
 
 int main()
 {
+
+	_setmode(_fileno(stdin), 0x00020000);
+	_setmode(_fileno(stdout), 0x00020000);
+
+	std::wcout << L"Xin chào!" << std::endl;
 	unsigned long long n;
 	InputNumber(n);
 
