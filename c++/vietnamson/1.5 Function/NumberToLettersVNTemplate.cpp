@@ -85,7 +85,7 @@ void showString(std::string str)
 
 int NumberOfDigits(unsigned long long n)
 {
-	return (n == 0) ? 1 : (int)log10((double)n) + 1;
+	return (n == 0) ? 1 : (unsigned long long)log10((double)n) + 1;
 }
 
 void ReadOneDigit(int n)
@@ -203,9 +203,9 @@ void ReadTwoDigits(int n)
 	}
 }
 
-void ReadThreeDigits(int n)
+void ReadThreeDigits(unsigned long long n)
 {
-	int numberOfDigit = 0;
+	unsigned long long numberOfDigit = 0;
 	numberOfDigit = NumberOfDigits(n);
 	if (numberOfDigit < 3)
 	{
@@ -213,7 +213,7 @@ void ReadThreeDigits(int n)
 		return;
 	}
 
-	int head = 0, otherDigit = 0;
+	unsigned long long head = 0, otherDigit = 0;
 	head = n / 100;
 	otherDigit = n % 100;
 
@@ -229,7 +229,7 @@ void ReadThreeDigits(int n)
 	}
 }
 
-void ReadRemainNumbers(long long numberOfDigits)
+void ReadRemainNumbers(unsigned long long numberOfDigits)
 {
 	if (numberOfDigits == 1 || numberOfDigits == 4 || numberOfDigits == 7)
 	{
@@ -245,7 +245,8 @@ void ReadRemainNumbers(long long numberOfDigits)
 
 void ReadNumber(unsigned long long n)
 {
-	int dotma = 0, numberOfDigit = 1;
+	unsigned long long numberOfDigit = 1;
+	int dotma = 0;
 	numberOfDigit = NumberOfDigits(n);
 	if (numberOfDigit < 4)
 	{
@@ -253,37 +254,42 @@ void ReadNumber(unsigned long long n)
 		return;
 	}
 
-	int head, powResult = 0, otherDigit = 0;
-	int temp = n;
+	unsigned long long head, powResult = 0, otherDigit = 0;
+	unsigned long long temp = n;
+	dotma = (unsigned long long)(NumberOfDigits(temp) - 1) / 3;
 
 	while (dotma >= 0)
 	{
 		dotma = (int)(NumberOfDigits(temp) - 1) / 3;
-		powResult = (int)pow(10, dotma * 3);
-		head = (int)temp / powResult;
-		// std::cout << "powResult " << powResult << std::endl;
-		// std::cout << "dotma " << dotma << std::endl;
-		// std::cout << "head " << head << std::endl;
-		if (head != 0)
+
+		if (dotma > 3)
 		{
-			if (temp != n)
+			powResult = (unsigned long long)pow(10, 3 * 3);
+			head = (unsigned long long)temp / powResult;
+			ReadNumber(head);
+			showString("ty");
+		}
+		else
+		{
+			powResult = (unsigned long long)pow(10, dotma * 3);
+			head = (unsigned long long)temp / powResult;
+			if (head != 0)
 			{
-				// std::cout << "co vo day ko " << dotma << std::endl;
-				int headDigits = NumberOfDigits(head);
-				if (headDigits < (numberOfDigit - 1))
+				if (temp != n)
 				{
-					ReadRemainNumbers(headDigits);
+					unsigned long long headDigits = NumberOfDigits(head);
+					if (headDigits < (numberOfDigit - 1))
+					{
+						ReadRemainNumbers(headDigits);
+					}
+					ReadThreeDigits(head);
 				}
-				ReadThreeDigits(head);
-			}
-			else
-			{
-				// std::cout << "co vo day ko2 " << std::endl;
-				ReadThreeDigits(head);
+				else
+				{
+					ReadThreeDigits(head);
+				}
 			}
 		}
-		numberOfDigit = NumberOfDigits(temp);
-		temp = (int)temp % powResult;
 
 		if (dotma == 1)
 		{
@@ -297,7 +303,9 @@ void ReadNumber(unsigned long long n)
 		{
 			showString("ty");
 		}
-		// std::cout << "co vo day ko3 " << std::endl;
+
+		numberOfDigit = NumberOfDigits(temp);
+		temp = (unsigned long long)temp % powResult;
 		dotma--;
 	}
 }

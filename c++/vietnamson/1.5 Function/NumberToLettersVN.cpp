@@ -19,7 +19,7 @@ Dữ liệu xuất:
 
 - Gồm một dòng kết quả là chuỗi tiếng Việt viết thường và không dấu, mỗi từ cách nhau một khoảng trắng.
 Ví dụ: 9223372036854775807, 1, 10, 11, 15, 21, 95, 100, 1000, 10001, 1020, 120023023, 1003023, 125000302, 124456789987, 123056789987, 12300008998....
- *
+ * 9 223 372 036 854 775 807
  * @return
  */
 void showString(std::string str)
@@ -37,7 +37,7 @@ void InputNumber(unsigned long long &n)
 
 int NumberOfDigits(unsigned long long n)
 {
-	return (n == 0)?1:(int)log10((double)n) + 1;
+	return (n == 0) ? 1 : (int)log10((double)n) + 1;
 }
 
 void ReadOneDigit(int n)
