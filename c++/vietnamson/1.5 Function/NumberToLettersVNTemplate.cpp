@@ -4,6 +4,7 @@
 #include <fcntl.h>
 #include <io.h>
 #include <string>
+#include <iomanip>
 
 /**
  * ĐỀ BÀI:
@@ -85,7 +86,21 @@ void InputNumber(unsigned long long &n)
 
 void showString(std::wstring str)
 {
-	std::wcout << L" " << str;
+	std::wcout << str;
+}
+
+void showString(int str, int fill = 0)
+{
+	if (fill != 0)
+	{
+		_setmode(_fileno(stdout), _O_TEXT);
+		std::cout << std::setfill('0') << std::setw(fill) << str;
+		_setmode(_fileno(stdout), _O_U16TEXT);
+	}
+	else
+	{
+		std::wcout << str;
+	}
 }
 
 int NumberOfDigits(unsigned long long n)
@@ -99,67 +114,67 @@ void ReadOneDigit(int n)
 	{
 	case 0:
 	{
-		showString(L"không");
+		showString(L" không");
 	};
 	break;
 	case 1:
 	{
-		showString(L"một");
+		showString(L" một");
 	};
 	break;
 	case 2:
 	{
-		showString(L"hai");
+		showString(L" hai");
 	};
 	break;
 	case 3:
 	{
-		showString(L"ba");
+		showString(L" ba");
 	};
 	break;
 	case 4:
 	{
-		showString(L"bốn");
+		showString(L" bốn");
 	};
 	break;
 	case 5:
 	{
-		showString(L"năm");
+		showString(L" năm");
 	};
 	break;
 	case 6:
 	{
-		showString(L"sáu");
+		showString(L" sáu");
 	};
 	break;
 	case 7:
 	{
-		showString(L"bảy");
+		showString(L" bảy");
 	};
 	break;
 	case 8:
 	{
-		showString(L"tám");
+		showString(L" tám");
 	};
 	break;
 	case 9:
 	{
-		showString(L"chín");
+		showString(L" chín");
 	};
 	break;
 	case 10:
 	{
-		showString(L"mười");
+		showString(L" mười");
 	};
 	break;
 	case 15:
 	{
-		showString(L"lăm");
+		showString(L" lăm");
 	};
 	break;
 	case 21:
 	{
-		showString(L"mốt");
+		showString(L" mốt");
 	};
 	break;
 	}
@@ -181,7 +196,7 @@ void ReadTwoDigits(int n)
 
 	if (head == 1)
 	{
-		showString(L"mười");
+		showString(L" mười");
 		if (otherDigit == 5)
 		{
 			otherDigit = 15;
@@ -191,7 +206,7 @@ void ReadTwoDigits(int n)
 	else
 	{
 		ReadOneDigit(head);
-		showString(L"mươi");
+		showString(L" mươi");
 
 		if (otherDigit != 0)
 		{
@@ -223,12 +238,12 @@ void ReadThreeDigits(unsigned long long n)
 	otherDigit = n % 100;
 
 	ReadOneDigit(head);
-	showString(L"trăm");
+	showString(L" trăm");
 	if (otherDigit != 0)
 	{
 		if (NumberOfDigits(otherDigit) == 1)
 		{
-			showString(L"lẻ");
+			showString(L" lẻ");
 		}
 		ReadTwoDigits(otherDigit);
 	}
@@ -236,15 +251,67 @@ void ReadThreeDigits(unsigned long long n)
 
 void ReadRemainNumbers(unsigned long long numberOfDigits)
 {
-	if (numberOfDigits == 1 || numberOfDigits == 4 || numberOfDigits == 7)
+	if (numberOfDigits % 3 == 1) //(numberOfDigits == 1 || numberOfDigits == 4 || numberOfDigits == 7)
 	{
 		ReadOneDigit(0);
-		showString(L"trăm lẻ");
+		showString(L" trăm lẻ");
 	}
-	else if (numberOfDigits == 2 || numberOfDigits == 5 || numberOfDigits == 8)
+	else if (numberOfDigits % 3 == 2) //(numberOfDigits == 2 || numberOfDigits == 5 || numberOfDigits == 8)
 	{
 		ReadOneDigit(0);
-		showString(L"trăm");
+		showString(L" trăm");
+	}
+}
+void ShowNumberWithDotma(unsigned long long n)
+{
+	unsigned long long dotma = 0, numberOfDigits = 0, head = 0, otherDigits = 0, powResult = 0, temp = 0;
+	temp = n;
+	numberOfDigits = NumberOfDigits(n);
+
+	if (numberOfDigits < 4)
+	{
+		showString(n);
+		return;
+	}
+	dotma = (int)(numberOfDigits - 1) / 3;
+
+	while (dotma != 0)
+	{
+		if (dotma > 3)
+		{
+			powResult = (unsigned long long)pow(10, 3 * 3);
+			head = (unsigned long long)n / powResult;
+			ShowNumberWithDotma(head);
+			if (head != 0)
+			{
+				showString(L",");
+			}
+		}
+		else
+		{
+			powResult = (unsigned long long)pow(10, dotma * 3);
+			head = (unsigned long long)n / powResult;
+			if (head != 0)
+			{
+				if (temp == n)
+				{
+					showString(head, 0);
+				}
+				else
+				{
+					showString(head, 3);
+				}
+				showString(L",");
+			}
+		}
+		numberOfDigits = NumberOfDigits(n);
+		n = (unsigned long long)n % powResult;
+		dotma--;
+		if (dotma == 0)
+		{
+			showString(n, 3);
+			return;
+		}
 	}
 }
 
@@ -261,18 +328,17 @@ void ReadNumber(unsigned long long n)
 
 	unsigned long long head, powResult = 0, otherDigit = 0;
 	unsigned long long temp = n;
-	dotma = (unsigned long long)(NumberOfDigits(temp) - 1) / 3;
+	dotma = (int)(NumberOfDigits(temp) - 1) / 3;
 
 	while (dotma >= 0)
 	{
 		dotma = (int)(NumberOfDigits(temp) - 1) / 3;
-
 		if (dotma > 3)
 		{
 			powResult = (unsigned long long)pow(10, 3 * 3);
 			head = (unsigned long long)temp / powResult;
 			ReadNumber(head);
-			showString(L"tỷ");
+			showString(L" tỷ");
 		}
 		else
 		{
@@ -298,15 +364,15 @@ void ReadNumber(unsigned long long n)
 
 		if (dotma == 1)
 		{
-			showString(L"nghìn");
+			showString(L" nghìn");
 		}
 		else if (dotma == 2)
 		{
-			showString(L"triệu");
+			showString(L" triệu");
 		}
 		else if (dotma == 3)
 		{
-			showString(L"tỷ");
+			showString(L" tỷ");
 		}
 
 		numberOfDigit = NumberOfDigits(temp);
@@ -324,7 +390,11 @@ int main()
 	std::wcout << L"Xin chào!" << std::endl;
 	unsigned long long n;
 	InputNumber(n);
+	showString(L"Số được viết dưới dạng số là: ");
+	ShowNumberWithDotma(n);
+	std::wcout << std::endl;
 
+	showString(L"Số được viết dưới dạng chữ là: ");
 	ReadNumber(n);
 	return 0;
 }
