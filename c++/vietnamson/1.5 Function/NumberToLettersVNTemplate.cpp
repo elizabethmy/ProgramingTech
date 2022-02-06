@@ -5,6 +5,7 @@
 #include <io.h>
 #include <string>
 #include <iomanip>
+#include <conio.h>
 
 /**
  * ĐỀ BÀI:
@@ -273,7 +274,7 @@ void ShowNumberWithDotma(unsigned long long n)
 		showString(n);
 		return;
 	}
-	dotma = (int)(numberOfDigits - 1) / 3;
+	dotma = (unsigned long long)(numberOfDigits - 1) / 3;
 
 	while (dotma != 0)
 	{
@@ -281,9 +282,9 @@ void ShowNumberWithDotma(unsigned long long n)
 		{
 			powResult = (unsigned long long)pow(10, 3 * 3);
 			head = (unsigned long long)n / powResult;
-			ShowNumberWithDotma(head);
 			if (head != 0)
 			{
+				ShowNumberWithDotma(head);
 				showString(L",");
 			}
 		}
@@ -381,6 +382,53 @@ void ReadNumber(unsigned long long n)
 	}
 }
 
+void InputNumberRuntime(unsigned long long &n)
+{
+	char c;
+	unsigned long long MAX_VALUE_TYPE = (long long int)pow(2, 8 * sizeof(n) - 1) - 1;
+	while (true)
+	{
+		c = getch();
+		unsigned long long temp;
+		if (c >= '0' && c <= '9' || c == 8)
+		{
+			if (c >= '0' && c <= '9')
+			{
+				// n * 10 + ((int)c - 48) > MAX_VALUE_TYPE
+				if (n < MAX_VALUE_TYPE - ((int)c - 48) / 10)
+				{
+					temp = (unsigned long long)c - 48;
+					n = n * 10 + temp;
+				}
+				else
+				{
+					std::wcout << L"Dữ liệu vượt qua giới hạn lưu trữ! " << n << std::endl;
+					Sleep(1000);
+				}
+			}
+
+			if (c == 8)
+			{
+				n /= 10;
+			}
+			system("cls");
+			showString(L"Số được viết dưới dạng số là: ");
+			ShowNumberWithDotma(n);
+			std::wcout << std::endl;
+			showString(L"Số được viết dưới dạng chữ là: ");
+			ReadNumber(n);
+			std::wcout << std::endl;
+		}
+
+		// To exit, press c
+		if (c == 'c')
+		{
+			showString(L"Chương trình sẽ tắt! ");
+			break;
+		}
+	}
+}
+
 int main()
 {
 
@@ -389,12 +437,12 @@ int main()
 
 	std::wcout << L"Xin chào!" << std::endl;
 	unsigned long long n;
-	InputNumber(n);
-	showString(L"Số được viết dưới dạng số là: ");
-	ShowNumberWithDotma(n);
-	std::wcout << std::endl;
-
-	showString(L"Số được viết dưới dạng chữ là: ");
-	ReadNumber(n);
+	InputNumberRuntime(n);
+	// InputNumber(n);
+	// showString(L"Số được viết dưới dạng số là: ");
+	// ShowNumberWithDotma(n);
+	// std::wcout << std::endl;
+	// showString(L"Số được viết dưới dạng chữ là: ");
+	// ReadNumber(n);
 	return 0;
 }
