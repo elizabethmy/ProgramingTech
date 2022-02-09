@@ -389,16 +389,14 @@ void InputNumberRuntime(unsigned long long &n)
 	while (true)
 	{
 		c = getch();
-		unsigned long long temp;
 		if (c >= '0' && c <= '9' || c == 8)
 		{
 			if (c >= '0' && c <= '9')
 			{
-				// n * 10 + ((int)c - 48) > MAX_VALUE_TYPE
-				if (n < MAX_VALUE_TYPE - ((int)c - 48) / 10)
+				// n = n * 10 + ((unsigned long long)c - 48) < MAX_VALUE_TYPE
+				if (n < MAX_VALUE_TYPE - ((unsigned long long)c - 48) / 10)
 				{
-					temp = (unsigned long long)c - 48;
-					n = n * 10 + temp;
+					n = n * 10 + (unsigned long long)c - 48;
 				}
 				else
 				{
