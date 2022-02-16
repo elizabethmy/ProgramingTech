@@ -70,20 +70,20 @@
 
 // 268 Create array from a value 0, 1 to make to array has parity
 
-// 268.1 Input an array A of integers and arrange the array A above according to the rules: 
+// ex.6 Input an array A of integers and arrange the array A above according to the rules: 
 //+ Positive numbers at the begining of the array and descending array
 //+ Negative numbers at the end of the array and ascending order
 
-// 268.2 Input an array A of integers and arrange the array A above according to the rules:
+// ex.7 Input an array A of integers and arrange the array A above according to the rules:
 //+ Even numbers are at the begining of the array and in ascending order
 //+ Odd numbers at the end of the array and in descending order
 
-// 268.3 Randomly generate an array of integers
+// ex.8 Randomly generate an array of integers
 //and then sort the array of integer ascending
 
-// 268.4 Input an array A of integers and find the 3rd largest element array
+// ex.9 Input an array A of integers and find the 3rd largest element array
 
-// 268.5 Advance application of Sorting Algorithm: Giving the sequence of integers A as follows:
+// ex.10 Advance application of Sorting Algorithm: Giving the sequence of integers A as follows:
 // 12 2 15 -3 8 5 1 =8 6 0 4 15.
 // Requirements:
 //1. Sort the above array in ascending order

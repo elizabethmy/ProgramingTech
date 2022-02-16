@@ -47,7 +47,7 @@
 //such that array b contains only the primes in array a
 
 
-//310.1 Đề thi tốt nghiệp lần 2/267/SBT Thầy NTTMK
+//ex.12 Đề thi tốt nghiệp lần 2/267/SBT Thầy NTTMK
 // Write a program to input an array of integers:
 // a> Output the largest element.
 // b> Sort the array ascending.

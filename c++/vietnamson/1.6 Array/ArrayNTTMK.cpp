@@ -3,7 +3,7 @@
 
 #define MAX 50
 /**
-* 180 EXERCISES
+* ALMOST 192 EXERCISES
 */
 //KỸ THUẬT NHẬP XUẤT MẢNG & * KỸ THUẬT ĐẶT LÍNH CANH CÁC BÀI TẬP CƠ BẢN
 void InputArray(int a[], int n)

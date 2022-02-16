@@ -59,7 +59,7 @@
 // 292 Let's transform array by replacing all the elements in the array 
 //with the nearest integer
 
-// 292.1 General program to convert base 3 system:
+// ex.11 General program to convert base 3 system:
 // - Convert positive integer n (system 10)to binary decimal (system 2)
 // octal (system 8), hexadecimal (system 16)
 
