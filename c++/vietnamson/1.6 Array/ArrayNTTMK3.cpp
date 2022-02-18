@@ -1,6 +1,42 @@
 #include <iostream>
 // CÁC BÀI TẬP TÌM KIẾM VÀ LIỆT KÊ
+void InputArray(int arr[], int n)
+{
+	int i = 0;
+	for (;i < n;i++)
+	{
+		std::cout << "\n Input numer: ";
+		std::cin >> a[i];
+	}
+}
 
+void OutputArray(float arr[], int n)
+{
+	int i = 0;
+	for (;i < n;i++)
+	{
+		std::cout << " " << a[i];
+	}
+}
+
+void InputArray(float arr[], int n)
+{
+	int i = 0;
+	for (;i < n;i++)
+	{
+		std::cout << "\n Input numer: ";
+		std::cin >> a[i];
+	}
+}
+
+void OutputArray(float arr[], int n)
+{
+	int i = 0;
+	for (;i < n;i++)
+	{
+		std::cout << " " << a[i];
+	}
+}
 
 //extra
 //ex.1 Sort the positive numbers in the array of float number ascending
@@ -124,30 +160,106 @@ void SordEvenOddNumbersEx3(int arr[], int n)
 // 176 List all negative in float array
 void ListNegativeNumbers(float arr[], int n)
 {
-	
+	int i = 0;
+	for (;i < n;i++)
+	{
+		if (a]i] < 0)
+		{
+			std::cout << " " << a[i];
+		}
+	}
 }
 
 // 177 List values in float array [x,y]
 void ValueXY(float arr[], int n, float x, float y)
 {
+	int i = 0;
+	if (x < y || x >= n || y >= n)
+	{
+		std::cout << "Invalid value x, y, n" << std::endl;
+		return;
+	}
 	
+	for (i = x;i <= y;i++)
+	{
+		std::cout << " " << a[i];
+	}
 }
 
 // 178 List even values in [x,y] integer
 void ListEvenValuesXY(int arr[], int n, int x, int y)
 {
-	
+	int i = 0;
+	if (x < y || x >= n || y >= n)
+	{
+		std::cout << "Invalid value x, y, n" << std::endl;
+		return;
+	}
+	for (i = x; i <= y;i++)
+	{
+		if (a[i] % 2 == 0)
+		{
+			std::cout << " " << a[i];
+		}
+	}
 }
 
 // 179 List value satify condition: greater than the absolute value of
 //the value immediately following it
-
+void ListValue179(int arr[], int n)
+{
+	int i = 0;
+	for (;i <  n - 1;i++)
+	{
+		if (a[i] > a[i + 1])
+		{
+			std::cout << " " << a[i];
+		}
+	}
+}
 
 // 180 List value satify condition: lower than the absolute value of
 // the  value immediately following it and greater than value immediately preceding it
-
+void ListValue180(int arr[], int n)
+{
+	int i = 0;
+	for (i = 1; i < n - 1;i++)
+	{
+		if (a[i] > a[i - 1] && a[i] < a[i + 1])
+		{
+			std::cout << " " << a[i];
+		}
+	}
+}
 // 181 List even value having at least 1 value beside is even number
-
+void ListValue181(int arr[], int n)
+{
+	int i = 0;
+	for (;i < n;i++)
+	{
+		if (i == 0)
+		{
+			if (a[1] % 2 == 0)
+			{
+				std::cout << " " << a[0];
+			}
+		} 
+		else if (i == n - 1)
+		{
+			if (a[n - 2] % 2 == 0)
+			{
+				std::cout << " " << a[n - 1];
+			}
+		}
+		else
+		{
+			if (a[i + 1] % 2 == 0 || a[i - 1] % 2 == 0)
+			{
+				std::cout << " " << a[i];
+			}
+		}
+	}
+}
 // 182 List all values in array that having at least 1 neighbor value with opposite sign
 
 // 183 List position that value at position is max value in float array
