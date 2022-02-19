@@ -261,9 +261,61 @@ void ListValue181(int arr[], int n)
 	}
 }
 // 182 List all values in array that having at least 1 neighbor value with opposite sign
-
+void  ListValues182(int arr[], int n)
+{
+	int i = 0;
+	for (;i < n;i++)
+	{
+		if (i == n-1)
+		{
+			if (a[n - 2] * a[n - 1] < 0)
+			{
+				std::cout << " " << a[n-1];
+			}
+		}
+		else if (i == 0)
+		{
+			if (a[0] * a[1] < 0)
+			{
+				std::cout << " " << a[0];
+			}
+		}
+		else
+		{
+			if (a[i - 1] * a[i] < 0 || a[i] * a[i + 1])
+			{
+				std::cout << " " << a[i];
+			}
+		}
+	}
+}
 // 183 List position that value at position is max value in float array
-
+int MaxValues(float arr[], int n)
+{
+	int i = 0;
+	float max = a[0];
+	for(;i < n;i++)
+	{
+		if (a[i] > max)
+		{
+			max = a[i];
+		}
+	}
+	return max;
+}
+void ListPosition183(float arr[], int n)
+{
+	int i = 0;
+	float max;
+	max = MaxValues(arr, n);
+	for (;i < n;i++)
+	{
+		if (max == arr[i])
+		{
+			std::cout << " " << i;
+		}
+	}
+}
 // 184 List position that value at position is prime number in integer array
 
 
