@@ -2,11 +2,20 @@
 
 //KỸ THUẬT TÍNH TỔNG 
 // 200 Sum all elements in array
-
+int SumArray(int arr[], int n)
+{
+	
+}
 // 201 Sum of all positive in float array
-
+float SumPositive(int arr[], int n)
+{
+	
+}
 // 202 Sum of values that having first digit is odd number in integer array
-
+int SumValueFirstDigitOddNumber(int arr[], int n)
+{
+	
+}
 // 203 Sum of values that having ten digit is 5 in integer array
 
 // 204 Sum of value that higher that value value before it
