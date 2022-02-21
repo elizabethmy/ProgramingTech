@@ -646,7 +646,7 @@ int BinarySearch(int arr[], int n)
 }
 // ex.5 Write a program to input an array of integers and integers k 
 //(1<=k<=number of distinct values in the array).
-//Find the kth largest term of the array
+//Find the kth largest value of the array
 bool isValueInArray(int arr[], int n, int x)
 {
 	int i = 0;
@@ -660,7 +660,7 @@ bool isValueInArray(int arr[], int n, int x)
 	return false;
 }
 
-int NumberOfDifferentElement(int arr[], int n)
+int FindkThLargest(int arr[], int n, int k=0)
 {
 	int i = 0, DiffArr[MAX], ndiff = 0;
 	for (;i < n;i++)
@@ -670,18 +670,16 @@ int NumberOfDifferentElement(int arr[], int n)
 			DiffArr[ndiff++] = arr[i];
 		}
 	}
-	return ndiff--;
-}
-void FindNumberHigherThank(int arr[], int n, int k=0)
-{
-	int i = 0;
-	for (;i < n;i++)
+	do
 	{
-		if (arr[i] > k)
+		std::cout << "\n Input k value: ";
+		std::cin >> k;
+		if (k < 1 || k > ndiff)
 		{
-			std::cout << " " << arr[i];
+			std::cout << "k value must between 1 and " << ndiff << std::endl;
 		}
-	}
+	} while(k < 1 || k > ndiff);
+	return DiffArr[ndiff--];
 }
 int main()
 {

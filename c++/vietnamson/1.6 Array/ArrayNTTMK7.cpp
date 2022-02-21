@@ -1,11 +1,18 @@
 #include <iostream>
-
+#include <cmath>
+#define MAX 50
 //KỸ THUẬT XỬ LÝ MẢNG CON
 // 293 List all subarrays in a one-dimensional array of integers
-
+void ListAllSubarrays(int arr[], int n)
+{
+	
+}
 // 294 List all sub-arrays of length greater than 
 //2 in a one-dimensional array of integers
-
+void ListAllSubarraysLongerThan2(int arr[], int n)
+{
+	
+}
 // 295 List all sub-array of length greater than 2 in a one-dimensional
 //array of integers
 
