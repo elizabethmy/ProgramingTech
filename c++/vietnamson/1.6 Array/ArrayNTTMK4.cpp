@@ -2,40 +2,123 @@
 #include <cmath>
 #define MAX 50
 
-//KỸ THUẬT TÍNH TỔNG 
+//KỸ THUẬT TÍNH TỔNG
+void InputArray(int arr[], int n)
+{
+	int i = 0;
+	for (;i < n;i++)
+	{
+		std::cout << "Input element: " << i << ": ";
+		std::cin >> arr[i];
+	}
+}
+void OutputArray(int arr[], int n)
+{
+	int i = 0;
+	for (;i < n;i++)
+	{
+		std::cout << " " << arr[i];
+	}
+}
 // 200 Sum all elements in array
 int SumArray(int arr[], int n)
 {
-	
+	int i = 0, sum = 0;
+	for (;i < n;i++)
+	{
+		sum += arr[i];
+	}
+	return sum;
 }
 // 201 Sum of all positive in float array
 float SumPositive(int arr[], int n)
 {
-	
+	float sum = 0;
+	int i= 0;
+	for (;i < n;i++)
+	{
+		if (arr[i] > 0)
+		{
+			sum += arr[i];
+		}
+	}
+	return sum;
 }
 // 202 Sum of values that having first digit is odd number in integer array
+bool isFirstDigitOddNumber(int n)
+{
+	int numberOfDigit = (int)log10((double)n) + 1;
+	int firstDigit = n / (int)pow(10, (double)(numberOfDigit - 1));
+	return (firstDigit % 2 != 0)?true:false;
+}
+
 int SumValueFirstDigitOddNumber(int arr[], int n)
 {
-	
+	int i = 0, sum = 0;
+	for (;i < n;i++)
+	{
+		if (isFirstDigitOddNumber(arr[i]) == true)
+		{
+			sum + = arr[i];
+		}
+	}
+	return sum;
 }
 // 203 Sum of values that having ten digit is 5 in integer array
-int SumTensIs5(int arr[ư, int n)
+bool isTensDigit5(int arr[], int n)
 {
-	
+	int tensDigit = n / 10;
+	if (tenDigit == 5 || tensDigit % 5 == 0)
+	{
+		return true;
+	}
+	return false;
 }
-// 204 Sum of value that higher that value value before it
+
+int SumTensIs5(int arr[], int n)
+{
+	int i = 0, sum = 0;
+	for (;i < n;i++)
+	{
+		if (isTensDigit5(arr[i]) == true)
+		{
+			sum += arr[i];
+		}
+	}
+	return sum;
+}
+// 204 Sum of value that higher than value before it
 int SumValueHigherThanValueBeforeIt(int arr[], int n)
 {
-	
+	int i = 0, sum = 0;
+	for (;i < n;i++)
+	{
+		if (a[i] > a[i - 1])
+		{
+			sum += arr[i];
+		}
+	}
+	return sum;
 }
 // 205 Sum of value higher than absolute value of the following it in float array
 float SumValueHigherThanAbsoluteValueFollowingIt(float arr[], int n)
 {
-	
+	int i = 0;
+	float sum = 0;
+	for (;i< n - 1;i++)
+	{
+		if (arr[i] > abs(arr[i + 1]))
+		{
+			sum += arr[i];
+		}
+	}
+	return sum;
 }
 // 206 Sum of value that higher than value arround it in float array
 float SumValueHigherThanValueArroundIt(float arr[], int n)
 {
+	int i = 1;
+	float sum = 0;
 	
 }
 // 207 Sum of extreme value: that value higher or lower than neighbor value

@@ -3,7 +3,14 @@
 #define MAX 50
 
 //KỸ THUẬT ĐẶT CỜ HIỆU
-
+void InputArray(int a[], int n)
+{
+	
+}
+void OutputArray(int a[], int n)
+{
+	
+}
 // 240 Check that value already exist value? if not return 0, else return 1
 int isExistValue(int arr[], int n, int x)
 {
@@ -152,21 +159,37 @@ void CreatebParityFroma(int arr[], int n)
 // ex.6 Input an array A of integers and arrange the array A above according to the rules: 
 //+ Positive numbers at the begining of the array and descending array
 //+ Negative numbers at the end of the array and ascending order
-
+void PositiveAtBeginingDesceningNegativeAtEndAscending(int a[], int n)
+{
+	
+}
 // ex.7 Input an array A of integers and arrange the array A above according to the rules:
 //+ Even numbers are at the begining of the array and in ascending order
 //+ Odd numbers at the end of the array and in descending order
-
+void EvenAtBeginingAscendingOddAtEndDescending(int arr[], int n)
+{
+	
+}
 // ex.8 Randomly generate an array of integers
 //and then sort the array of integer ascending
-
+void RandomlyArray(int arr[], int n)
+{
+	
+}
+void SortAscending(int arr[], int n)
+{
+	
+}
 // ex.9 Input an array A of integers and find the 3rd largest element array
-
+int Find3rdElementInArray(int arr[], int n)
+{
+	
+}
 // ex.10 Advance application of Sorting Algorithm: Giving the sequence of integers A as follows:
-// 12 2 15 -3 8 5 1 =8 6 0 4 15.
+// A = {12 2 15 -3 8 5 1 =8 6 0 4 15}
 // Requirements:
-//1. Sort the above array in ascending order
-// 2. Derive the 3rd largest number in the sequence
+//1. Sort the above array in ascending order => done
+// 2. Derive the 3rd largest number in the sequence => done
 // 3. Derive the maximum number of the elements in the sequence
 // 4. Sort the above sequence in ascending absolute value order
 // 5. Arrange the above sequence according to the rule after:
@@ -175,7 +198,26 @@ void CreatebParityFroma(int arr[], int n)
 // 6. Arrange the sequence above according to the following rule:
 //     6.1 Even numbers at the begining of the array and in ascending order.
 //     6.2 Odd numbers at the end of the array and in descending order.
-
+//3
+int FindLargestElement(int arr[], int n)
+{
+	
+}
+//4
+void SortAbsoluteAscending(int arr[], int n)
+{
+	
+}
+//5
+void SortPositiveAtBeginDescendNegativeAtEndAscend(int a[], int n)
+{
+	
+}
+//6
+void EvenAtBeginAscendOddAtDescend(int a[], int n)
+{
+	
+}
 
 int main()
 {

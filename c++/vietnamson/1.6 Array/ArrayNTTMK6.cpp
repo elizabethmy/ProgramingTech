@@ -2,6 +2,14 @@
 #include <cmath>
 #define MAX 50
 //KỸ THUẬT THÊM, XÓA
+void InputArray(int arr[], int n)
+{
+	
+}
+void OutputArray(int arr[], int n)
+{
+	
+}
 // 266 Add an x value into k position
 void AddValuex(int arr[], int n, int x, int k)
 {
