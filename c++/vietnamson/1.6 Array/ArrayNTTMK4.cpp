@@ -119,44 +119,168 @@ float SumValueHigherThanValueArroundIt(float arr[], int n)
 {
 	int i = 1;
 	float sum = 0;
-	
+	for (;i < n - 1;i++)
+	{
+		if (arr[i] > arr[i - 1] && arr[i] > a[i + 1])
+		{
+			sum +-= arr[i];
+		}
+	}
+	return sum;
 }
 // 207 Sum of extreme value: that value higher or lower than neighbor value
 int SumExtremeValue(int arr[], int n)
 {
-	
+	int i = 1, sum = 0;
+	bool isExtreme = false;
+	for (;i < n - 1;i++)
+	{
+		isExtreme = ((arr[i] > arr[i -1] && arr[i] > arr[i + 1]) || (arr[i] < arr[i -1] && arr[i] < arr[i + 1]))?true:false;
+		if (isExtrememe == true)
+		{
+			sum += arr[i];
+		}
+	}
 }
 // 208 Sum of square number in integer array
+bool isSquareNumber(int n)
+{
+	int i = 1;
+	for (;i < (int)sqrt((double)n);i++)
+	{
+		if (i * i == n)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 int SumSquareNumber(int arr[], int n)
 {
-	
+	int i = 0;
+	for (;i < n;i++)
+	{
+		if (isSquareNumber(arr[i]) == true)
+		{
+			sum += arr[i];
+		}
+	}
 }
 // 209 Sum of symmetric values in integer array
+bool isSymmetricNumber(int n)
+{
+	int temp = n, reverse = 0;
+	
+	while (temp > 0)
+	{
+		reverse = reverse * 10 + temp % 10;
+		temp /= 10;
+	}
+	return (reverse == n)?true:false;
+}
 int SumOfSymmetric(int arr[], int n)
 {
-	
+	int i = 0, sum = 0;
+	for (;i < n;i++)
+	{
+		if (isSymmetricNumber(arr[i]) == true)
+		{
+			sum += arr[i];
+		}
+	}
+	return sum;
 }
 // 210 Sum of value that having first digit is even number in integer array
+bool isFirstDigitEven(int n)
+{
+	int numberOfDigit = (int)log10((double)n) + 1;
+	int firstDigit = n / (int)pow(10, (double)(numberOfDigit - 1));
+	return (firstDigit % 2 == 0)?true:false;
+}
+
 int SumOfValueFirstDigitEvenNumber(int arr[], int n)
 {
-	
+	int i = 0, sum = 0;
+	for (;i < n;i++)
+	{
+		if (isFirstDigitEven(arr[i]) == true)
+		{
+			sum += arr[i];
+		}
+	}
+	return sum;
 }
 // 211 Average of all prime numbers in integer array
+bool isPrimeNumber(int n)
+{
+	if (n <= 1)
+	{
+		return false;
+	}
+	if (n == 2 || n == 3)
+	{
+		return true;
+	}
+	if (n % 2 == 0)
+	{
+		return false;
+	}
+	int i = 3;
+	
+	for (;i < (int)sqrt((double)n);i+=2)
+	{
+		if (n % i == 0)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+                                
 int AverageOfAllPrimeNumber(int arr[], int n)
 {
-	
+	int i = 0, sum = 0;
+	for (;i < n;i++)
+	{
+		if (isPrimeNumber(arr[i]) == true)
+		{
+			sum += arr[i];
+		}
+	}
+	retun sum / n;
 }
 // 212 Average of all positive number in float array
 float AverageOfAllPositiveNumber(float arr[], int n)
 {
-	
+	int i = 0, sum = 0;
+	for (;i < n;i++)
+	{
+		if (arr[i] > 0)
+		{
+			sum += arr[i];
+		}
+	}
+	return sum / n;
 }
 // 213 Average of all values higher than x in float array
-float AverageOfAllValuesHigherThanX(float arr[], int n)
+float AverageOfAllValuesHigherThanX(float arr[], int n, float x)
 {
-	
+	int i = 0;
+	float sum = 0;
+	for (;i < n;i++)
+	{
+		if (arr[i] > x)
+		{
+			sum += arr[i];
+		}
+	}
+	return sum / n;
 }
 // 214 Multiply average of all positive value in float array
+// Find Nth root: https://www.geeksforgeeks.org/n-th-root-number/
+//Math paper: https://en.wikipedia.org/wiki/Methods_of_computing_square_roots
+////Math paper: https://en.wikipedia.org/wiki/Newton%27s_method
 float MultiplyAverageOfAllPositive(float arr[], int n)
 {
 	
