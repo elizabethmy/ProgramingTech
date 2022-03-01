@@ -281,7 +281,24 @@ float AverageOfAllValuesHigherThanX(float arr[], int n, float x)
 // Find Nth root: https://www.geeksforgeeks.org/n-th-root-number/
 //Math paper: https://en.wikipedia.org/wiki/Methods_of_computing_square_roots
 ////Math paper: https://en.wikipedia.org/wiki/Newton%27s_method
-float MultiplyAverageOfAllPositive(float arr[], int n)
+/* Newton method
+* x[0]: initial value, n: level, number A
+* x[1] = x[0] +  (x[0]^n - A)/(n * x[0]^(n-1))
+*		 = (n - 1 / n) * x[0] + (A / n) * ( 1 / x[0]^ (n -1))
+*/
+double FindNthRoot(double A, int n)
+{
+	double x0 = sqrt(A), eps = 0.0001, delta = 1, x1;
+	while (delta < 0 && delta >= eps)
+	{
+		x1 = (n - 1 / n) * x0 + (A / n) * (1 / pow(x0, n - 1));
+		delta = abs(x0 - x1);
+		x0 = x1;
+	}
+	return x1;
+}
+
+double MultiplyAverageOfAllPositive(double arr[], int n)
 {
 	
 }
