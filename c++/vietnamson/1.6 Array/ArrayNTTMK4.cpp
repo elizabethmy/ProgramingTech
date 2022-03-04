@@ -300,7 +300,17 @@ double FindNthRoot(double A, int n)
 
 double MultiplyAverageOfAllPositive(double arr[], int n)
 {
-	
+	//multiply all positive numbers
+	int numberOfPositive = 0, multiply = 1, i = 0;
+	for (;i < n;i++)
+	{
+		if (arr[i] > 0)
+		{
+			numberOfPositive++;
+			multiply *= arr[i];
+		}
+	}
+	return FindNRoot(multiply, numberOfDigit);
 }
 // 215 Average distance between 2 values in integer array
 int AverageDistance2Values(int arr[], int n)
