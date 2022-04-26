@@ -1,0 +1,198 @@
+{
+  "Adb": "C:\\DevTools\\tools\\PlogWin\\adb.exe",
+  "DsymFile": "D:\\BUILD\\345a\\crashwebview\\lib\\arm64-v8a\\libwebviewchromium.so",
+  "Filters": [
+    {
+      "Name": "AndroidRuntime",
+      "Info": {
+        "Tag": "AndroidRuntime",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "DEBUG",
+      "Info": {
+        "Tag": "DEBUG",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "TNT",
+      "Info": {
+        "Tag": "TNT",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "ActivityManager",
+      "Info": {
+        "Tag": "ActivityManager",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "zygote64",
+      "Info": {
+        "Tag": "zygote64",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "IAP",
+      "Info": {
+        "Tag": "IAP",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "InAppBilling",
+      "Info": {
+        "Tag": "InAppBilling",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "SUtils",
+      "Info": {
+        "Tag": "SUtils",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "WindowManager",
+      "Info": {
+        "Tag": "WindowManager",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "GO",
+      "Info": {
+        "Tag": "GO",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "LLLib",
+      "Info": {
+        "Tag": "LLLib",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "GLOTv3",
+      "Info": {
+        "Tag": "GLOTv3",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "GAIA",
+      "Info": {
+        "Tag": "GAIA",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "GLADS",
+      "Info": {
+        "Tag": "GLADS",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "AdsManager",
+      "Info": {
+        "Tag": "AdsManager",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "IDENTIFIERS",
+      "Info": {
+        "Tag": "IDENTIFIERS",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "WebViewFactory",
+      "Info": {
+        "Tag": "WebViewFactory",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "loftA9HW.HUAWE",
+      "Info": {
+        "Tag": "loftA9HW.HUAWE",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "chromium",
+      "Info": {
+        "Tag": "chromium",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "UnityAds",
+      "Info": {
+        "Tag": "UnityAds",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "cr_AwContents",
+      "Info": {
+        "Tag": "cr_AwContents",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "WebViewZygoteInit",
+      "Info": {
+        "Tag": "WebViewZygoteInit",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "NetworkKit_CountryCodeBean",
+      "Info": {
+        "Tag": "NetworkKit_CountryCodeBean",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "HuaweiAndroidGLSocialLibActivity",
+      "Info": {
+        "Tag": "HuaweiAndroidGLSocialLibActivity",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "NetworkKit_c",
+      "Info": {
+        "Tag": "NetworkKit_c",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "HMSSDK_HuaweiApi",
+      "Info": {
+        "Tag": "HMSSDK_HuaweiApi",
+        "Pid": null
+      }
+    },
+    {
+      "Name": "GLSocialLib_HUAWEI",
+      "Info": {
+        "Tag": "GLSocialLib_HUAWEI",
+        "Pid": null
+      }
+    }
+  ],
+  "Negative": [],
+  "IsDark": false,
+  "MaxLogLines": 200000
+}
